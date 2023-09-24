@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BaseFormComponent} from "../../shared/form-base/form-base";
+import {ApiService} from "../../core/services/api.service";
 
 @Component({
   selector: 'app-signin',
@@ -9,7 +10,8 @@ import {BaseFormComponent} from "../../shared/form-base/form-base";
 })
 export class SigninComponent extends BaseFormComponent implements OnInit {
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private apiService: ApiService
   ) {
     super()
   }
@@ -22,7 +24,11 @@ export class SigninComponent extends BaseFormComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.formulario)
+    this.apiService.loginUser(this.formulario.value)
+  }
+
+  getList(){
+    this.apiService.getList()
   }
 
   verifyValidTouched(field: string): boolean {
