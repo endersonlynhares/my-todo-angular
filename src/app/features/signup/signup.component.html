@@ -1,9 +1,31 @@
 <h2 class="title">Nova Conta</h2>
-<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="signup-form">
-  <app-input-auth formControlName="nome" label="Nome" id="nome" name="nome" type="text" />
-  <app-input-auth formControlName="email" id="email" label="Email" name="email" type="email" />
-  <app-input-auth formControlName="senha" id="senha" label="senha" name="senha" type="password" />
-  <app-input-auth formControlName="passwordConfirm" id="passwordConfirm" label="Confirmação de Senha" name="passwordConfirm" type="passwordConfirm" />
-  <app-button-auth text="Cadastrar-se"></app-button-auth>
+<form [formGroup]="formulario" (ngSubmit)="submit()" class="signin-form">
+  <app-input-auth
+    [control]="formulario.get('nome')"
+    field="nome" formControlName="nome"
+    label="Nome"
+    type="text">
+  </app-input-auth>
+  <app-input-auth
+    [control]="formulario.get('email')"
+    field="email" formControlName="email"
+    label="Email"
+    type="email">
+  </app-input-auth>
+  <app-input-auth
+    [control]="formulario.get('senha')"
+    field="senha"
+    formControlName="senha"
+    label="Senha"
+    type="password"
+  />
+  <app-input-auth
+    [control]="formulario.get('confirmacaoSenha')"
+    field="confirmacaoSenha"
+    formControlName="confirmacaoSenha"
+    label="Confirmação de Senha"
+    type="password"
+  />
+  <app-button-auth [disabled]="formulario.invalid" text="Entrar"></app-button-auth>
 </form>
 
