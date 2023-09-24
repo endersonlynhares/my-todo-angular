@@ -1,10 +1,7 @@
-<form class="signin-form">
-  <div class="input-group">
-    <label for="email" class="input-group__label">Email </label>
-    <input type="email" class="input-group__input" id="email">
-  </div>
-  <div class="input-group">
-    <label for="pass" class="input-group__label">Password </label>
-    <input type="password" class="input-group__input" id="pass">
-  </div>
+<h2 class="title">Autenticação</h2>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="signin-form">
+  <app-input-auth formControlName="email" label="Email" id="email" name="email" type="email" />
+  <app-input-auth formControlName="password" id="password" label="Password" name="password" type="password" />
+  <app-button-auth text="Entrar" ></app-button-auth>
 </form>
+

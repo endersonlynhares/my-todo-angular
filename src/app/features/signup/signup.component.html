@@ -1,1 +1,9 @@
-<p>signup works!</p>
+<h2 class="title">Nova Conta</h2>
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="signup-form">
+  <app-input-auth formControlName="nome" label="Nome" id="nome" name="nome" type="text" />
+  <app-input-auth formControlName="email" id="email" label="Email" name="email" type="email" />
+  <app-input-auth formControlName="senha" id="senha" label="senha" name="senha" type="password" />
+  <app-input-auth formControlName="passwordConfirm" id="passwordConfirm" label="Confirmação de Senha" name="passwordConfirm" type="passwordConfirm" />
+  <app-button-auth text="Cadastrar-se"></app-button-auth>
+</form>
+
