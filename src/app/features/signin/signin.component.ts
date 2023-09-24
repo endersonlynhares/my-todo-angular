@@ -1,27 +1,34 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {BaseFormComponent} from "../../shared/form-base/form-base";
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.sass']
 })
-export class SigninComponent {
-  formulario!: FormGroup
-
+export class SigninComponent extends BaseFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+    super()
+  }
 
-  ngOnInit(){
+  override ngOnInit() {
     this.formulario = this.formBuilder.group({
-      email: [null, Validators.email],
-      password: [null]
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(8)]],
     })
   }
 
-  onSubmit(){
-    console.log(this.formulario.value)
+  submit() {
+    console.log(this.formulario)
+  }
+
+  verifyValidTouched(field: string): boolean {
+    return <boolean>(
+      !this.formulario.get(field)?.valid && (this.formulario.get(field)?.touched || this.formulario.get(field)?.dirty)
+    )
   }
 
 }

@@ -7,4 +7,5 @@ import {Component, Input} from '@angular/core';
 })
 export class ButtonAuthComponent {
   @Input() text!: string
+  @Input() disabled!: boolean
 }

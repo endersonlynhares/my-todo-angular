@@ -1,7 +1,18 @@
 <h2 class="title">Autenticação</h2>
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="signin-form">
-  <app-input-auth formControlName="email" label="Email" id="email" name="email" type="email" />
-  <app-input-auth formControlName="password" id="password" label="Password" name="password" type="password" />
-  <app-button-auth text="Entrar" ></app-button-auth>
+<form [formGroup]="formulario" (ngSubmit)="submit()" class="signin-form">
+  <app-input-auth
+    [control]="formulario.get('email')"
+    field="email" formControlName="email"
+    label="Email"
+    type="email">
+  </app-input-auth>
+  <app-input-auth
+    [control]="formulario.get('password')"
+    field="password"
+    formControlName="password"
+    label="Password"
+    type="password"
+  />
+  <app-button-auth [disabled]="formulario.invalid" text="Entrar"></app-button-auth>
 </form>
 
