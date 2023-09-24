@@ -1,0 +1,26 @@
+.input-group
+  display: flex
+  flex-direction: column
+  margin-top: 12px
+
+  &__label
+    color: var(--text-secondary)
+
+  &__input
+    background: transparent
+    border: 1px solid rgba(108, 117, 125, 1)
+    border-radius: 3px
+    color: var(--text-secondary)
+
+    height: 38px
+    padding: 0 10px
+    font-size: 1rem
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus
+      border: 1px solid white
+      -webkit-text-fill-color: black !important
+      -webkit-box-shadow: 0 0 0 1000px #000 inset
+      transition: background-color 5000s ease-in-out 0s
+
