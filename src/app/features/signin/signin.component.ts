@@ -27,10 +27,6 @@ export class SigninComponent extends BaseFormComponent implements OnInit {
     this.apiService.loginUser(this.formulario.value)
   }
 
-  getList(){
-    this.apiService.getList()
-  }
-
   verifyValidTouched(field: string): boolean {
     return <boolean>(
       !this.formulario.get(field)?.valid && (this.formulario.get(field)?.touched || this.formulario.get(field)?.dirty)

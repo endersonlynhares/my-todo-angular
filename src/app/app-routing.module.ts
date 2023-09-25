@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {AuthLayoutComponent} from "./core/layouts/auth-layout/auth-layout.component";
 
 const routes: Routes = [
@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
-    children:[
+    children: [
       {
         path: 'signin',
         loadChildren: () => import('./features/signin/signin.module').then(m => m.SigninModule)
@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('./features/signup/signup.module').then(m => m.SignupModule)
       }
     ]
+  },
+  {
+    path: 'lists',
+    loadChildren: () => import('./features/lists/lists.module').then(m => m.ListsModule)
   }
 ];
 
@@ -27,4 +31,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
