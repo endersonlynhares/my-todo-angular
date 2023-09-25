@@ -42,4 +42,9 @@ export class ApiService {
     localStorage.removeItem("name");
   }
 
+  get isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+
 }

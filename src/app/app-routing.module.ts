@@ -1,11 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthLayoutComponent} from "./core/layouts/auth-layout/auth-layout.component";
+import {authGuard} from "./core/guards/auth.guard";
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./features/tasks/tasks.module').then(m => m.TasksModule)
+    loadChildren: () => import('./features/tasks/tasks.module').then(m => m.TasksModule),
+    canActivate: [authGuard]
   },
   {
     path: '',
@@ -23,7 +25,8 @@ const routes: Routes = [
   },
   {
     path: 'lists',
-    loadChildren: () => import('./features/lists/lists.module').then(m => m.ListsModule)
+    loadChildren: () => import('./features/lists/lists.module').then(m => m.ListsModule),
+    canActivate: [authGuard]
   }
 ];
 
