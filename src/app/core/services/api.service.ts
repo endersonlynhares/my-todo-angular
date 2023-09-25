@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 interface User {
   name: string,
@@ -17,7 +18,7 @@ interface DataResponse {
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   getToken(): string | null {
@@ -29,7 +30,7 @@ export class ApiService {
       next: (data: any) => {
         localStorage.setItem('token', data.accessToken);
         localStorage.setItem('name', data.user.name);
-        console.log(data)
+        this.router.navigate(['']).then()
       },
       error: (err) => {
         alert(err.error['erros'][0])
@@ -38,8 +39,9 @@ export class ApiService {
   }
 
   logoutUser() {
-    localStorage.removeItem("id_token");
+    localStorage.removeItem("token");
     localStorage.removeItem("name");
+    this.router.navigate(['/signin']).then()
   }
 
   get isAuthenticated(): boolean {

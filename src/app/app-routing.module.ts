@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthLayoutComponent} from "./core/layouts/auth-layout/auth-layout.component";
 import {authGuard} from "./core/guards/auth.guard";
+import {notAuthGuard} from "./core/guards/not-auth.guard";
 
 const routes: Routes = [
   {
@@ -12,14 +13,15 @@ const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
+    canActivate: [notAuthGuard],
     children: [
       {
         path: 'signin',
-        loadChildren: () => import('./features/signin/signin.module').then(m => m.SigninModule)
+        loadChildren: () => import('./features/signin/signin.module').then(m => m.SigninModule),
       },
       {
         path: 'signup',
-        loadChildren: () => import('./features/signup/signup.module').then(m => m.SignupModule)
+        loadChildren: () => import('./features/signup/signup.module').then(m => m.SignupModule),
       }
     ]
   },
