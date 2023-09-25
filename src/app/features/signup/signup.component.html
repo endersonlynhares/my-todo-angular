@@ -1,8 +1,8 @@
 <h2 class="title">Nova Conta</h2>
 <form [formGroup]="formulario" (ngSubmit)="submit()" class="signin-form">
   <app-input-auth
-    [control]="formulario.get('nome')"
-    field="nome" formControlName="nome"
+    [control]="formulario.get('name')"
+    field="name" formControlName="name"
     label="Nome"
     type="text">
   </app-input-auth>
@@ -13,16 +13,16 @@
     type="email">
   </app-input-auth>
   <app-input-auth
-    [control]="formulario.get('senha')"
-    field="senha"
-    formControlName="senha"
+    [control]="formulario.get('password')"
+    field="password"
+    formControlName="password"
     label="Senha"
     type="password"
   />
   <app-input-auth
-    [control]="formulario.get('confirmacaoSenha')"
-    field="confirmacaoSenha"
-    formControlName="confirmacaoSenha"
+    [control]="formulario.get('passwordConfirm')"
+    field="passwordConfirm"
+    formControlName="passwordConfirm"
     label="Confirmação de Senha"
     type="password"
   />

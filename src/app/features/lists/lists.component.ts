@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ApiService} from "../../core/services/api.service";
+import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'app-lists',
@@ -8,12 +9,12 @@ import {ApiService} from "../../core/services/api.service";
 })
 export class ListsComponent {
   constructor(
-    private apiService: ApiService
+    private authService: AuthService
   ) {
   }
 
-  logOut(){
-    this.apiService.logoutUser()
+  logOut() {
+    this.authService.logoutUser()
   }
 
 }

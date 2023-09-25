@@ -18,7 +18,6 @@ export abstract class BaseFormComponent implements OnInit {
     if (this.formulario.valid) {
       this.submit();
     } else {
-      console.log('formulario invalido');
       this.verificaValidacoesForm(this.formulario);
     }
   }
@@ -59,13 +58,4 @@ export abstract class BaseFormComponent implements OnInit {
       return campoEmail.errors['email'] && campoEmail.touched;
     }
   }
-
-  aplicaCssErro(campo: string) {
-    return {
-      'has-error': this.verificaValidTouched(campo),
-      'has-feedback': this.verificaValidTouched(campo)
-    };
-  }
-
-
 }

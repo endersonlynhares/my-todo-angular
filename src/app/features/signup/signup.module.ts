@@ -10,13 +10,13 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   declarations: [
     SignupComponent
   ],
-    imports: [
-        CommonModule,
-        SignupRoutingModule,
-        SharedModule,
-        FormsModule,
-        ReactiveFormsModule
-    ]
+  imports: [
+    CommonModule,
+    SignupRoutingModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class SignupModule {
 }

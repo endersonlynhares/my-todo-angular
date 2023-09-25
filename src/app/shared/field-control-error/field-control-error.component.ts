@@ -8,7 +8,6 @@ import {FormValidations} from "../form-validations";
   styleUrls: ['./field-control-error.component.sass']
 })
 export class FieldControlErrorComponent {
-  // @Input() showError!: boolean
   @Input() field!: string
   @Input() control!: FormControl
 

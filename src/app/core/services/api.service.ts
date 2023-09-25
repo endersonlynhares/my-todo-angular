@@ -1,52 +1,63 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {map} from "rxjs"
 
 interface User {
   name: string,
   password: string
 }
 
-interface DataResponse {
+type DataResponse = {
   accessToken: string,
   expiresIn: number,
-  user: User
+  user: {
+    id: string,
+    name: string,
+    email: string
+  }
 }
+
+interface registerUserData {
+  name: string,
+  email: string,
+  password: string,
+  confirmPassword: string
+}
+
+const apiURL: string = 'https://api.todo.maracanau.ifce.edu.br'
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class ApiService {
 
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  getToken(): string | null {
-    return localStorage.getItem('token');
-  }
-
   loginUser(user: User) {
-    this.http.post('https://api.todo.maracanau.ifce.edu.br/Auth/login', user).subscribe({
+    this.http.post(`${apiURL}/Auth/login`, user).subscribe({
       next: (data: any) => {
         localStorage.setItem('token', data.accessToken);
         localStorage.setItem('name', data.user.name);
         this.router.navigate(['']).then()
       },
-      error: (err) => {
+      error: (err: any) => {
         alert(err.error['erros'][0])
       }
     })
   }
 
-  logoutUser() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("name");
-    this.router.navigate(['/signin']).then()
+  registerUser(newUser: registerUserData) {
+    this.http.post(`${apiURL}/Auth/register`, newUser).subscribe({
+      next: (data: any) => {
+        this.router.navigate(['/signin']).then()
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
   }
-
-  get isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    return !!token;
-  }
-
 }
