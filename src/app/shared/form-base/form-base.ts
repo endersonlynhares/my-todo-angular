@@ -1,4 +1,4 @@
-import {Component, OnInit, Directive} from '@angular/core';
+import {OnInit, Directive} from '@angular/core';
 import {FormGroup, FormArray} from '@angular/forms';
 
 @Directive()

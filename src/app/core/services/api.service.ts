@@ -1,22 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {map} from "rxjs"
 
 interface User {
   name: string,
   password: string
 }
 
-type DataResponse = {
-  accessToken: string,
-  expiresIn: number,
-  user: {
-    id: string,
-    name: string,
-    email: string
-  }
-}
 
 interface registerUserData {
   name: string,
@@ -52,7 +42,7 @@ export class ApiService {
 
   registerUser(newUser: registerUserData) {
     this.http.post(`${apiURL}/Auth/register`, newUser).subscribe({
-      next: (data: any) => {
+      next: () => {
         this.router.navigate(['/signin']).then()
       },
       error: (err) => {
