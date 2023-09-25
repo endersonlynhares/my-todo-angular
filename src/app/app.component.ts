@@ -6,13 +6,6 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.sass'],
-    providers: [
-      {
-        multi: true,
-        provide: HTTP_INTERCEPTORS,
-        useClass: TokenInterceptorService
-      }
-    ]
 })
 export class AppComponent {
     title = 'my-todo-angular';
