@@ -1,17 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {HttpClientModule} from "@angular/common/http";
-import { CommonLayoutComponent } from './layouts/common-layout/common-layout.component';
-
-
+import {AuthLayoutModule} from "./layouts/auth-layout/auth-layout.module";
+import {CommonLayoutModule} from "./layouts/common-layout/common-layout.module";
+import {ComponentsModule} from "./components/components.module";
 
 @NgModule({
-  declarations: [
-    CommonLayoutComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthLayoutModule,
+    CommonLayoutModule,
+    ComponentsModule
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+}

@@ -16,10 +16,8 @@ import {TokenInterceptorService} from "./core/services/token-interceptor.service
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthLayoutModule,
     SharedModule,
     CoreModule,
-
   ],
   providers: [
     {
