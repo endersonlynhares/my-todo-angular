@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthService} from "../../core/services/auth.service";
+import {ApiService} from "../../core/services/api.service";
 
 @Component({
   selector: 'app-lists',
@@ -8,8 +9,10 @@ import {AuthService} from "../../core/services/auth.service";
 })
 export class ListsComponent {
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private api:ApiService
   ) {
+    api.getLists()
   }
 
   logOut() {

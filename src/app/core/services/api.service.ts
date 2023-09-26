@@ -40,6 +40,10 @@ export class ApiService {
     })
   }
 
+  getLists(){
+    this.http.get(`${apiURL}/tasks`).subscribe(v => console.log('dasd'))
+  }
+
   registerUser(newUser: registerUserData) {
     this.http.post(`${apiURL}/Auth/register`, newUser).subscribe({
       next: () => {
