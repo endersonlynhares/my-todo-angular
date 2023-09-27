@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {sideNavData} from "./sidenav-data";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-sidenav',
@@ -7,6 +8,20 @@ import {sideNavData} from "./sidenav-data";
   styleUrls: ['./sidenav.component.sass']
 })
 export class SidenavComponent {
-  collapse: boolean = false
+  collapsed: boolean = false
   sideNavData = sideNavData
+
+  constructor(
+    private authService: AuthService
+  ) {
+  }
+
+  toggleColapse() {
+    this.collapsed = !this.collapsed
+  }
+
+  logOut() {
+    this.authService.logoutUser()
+  }
+
 }

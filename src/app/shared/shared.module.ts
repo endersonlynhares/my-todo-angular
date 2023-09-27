@@ -4,6 +4,7 @@ import { InputAuthComponent } from './input-auth/input-auth.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ButtonAuthComponent } from './button-auth/button-auth.component';
 import { FieldControlErrorComponent } from './field-control-error/field-control-error.component';
+import { CustomIconComponent } from './custom-icon/custom-icon.component';
 
 
 
@@ -11,7 +12,8 @@ import { FieldControlErrorComponent } from './field-control-error/field-control-
   declarations: [
     InputAuthComponent,
     ButtonAuthComponent,
-    FieldControlErrorComponent
+    FieldControlErrorComponent,
+    CustomIconComponent
   ],
   imports: [
     CommonModule,
@@ -19,9 +21,10 @@ import { FieldControlErrorComponent } from './field-control-error/field-control-
     FormsModule,
     ReactiveFormsModule
   ],
-  exports: [
-    InputAuthComponent,
-    ButtonAuthComponent
-  ]
+    exports: [
+        InputAuthComponent,
+        ButtonAuthComponent,
+        CustomIconComponent
+    ]
 })
 export class SharedModule { }

@@ -8,15 +8,5 @@ import {ApiService} from "../../core/services/api.service";
   styleUrls: ['./lists.component.sass']
 })
 export class ListsComponent {
-  constructor(
-    private authService: AuthService,
-    private api:ApiService
-  ) {
-    api.getLists()
-  }
-
-  logOut() {
-    this.authService.logoutUser()
-  }
 
 }

@@ -9,9 +9,4 @@ export const sideNavData = [
     label: 'Listas',
     imagePath: 'assets/list-bulleted.svg'
   },
-  {
-    routeLink: null,
-    label: 'SignOut',
-    imagePath: 'assets/signout.svg'
-  },
 ]

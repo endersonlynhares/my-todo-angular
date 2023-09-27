@@ -1,6 +1,95 @@
 .navbar
   align-content: flex-start
   background-color: var(--primary)
-  display: flex
-  padding: 1rem
+  width: 5rem
+  position: relative
+  transition: all .3s ease-in-out
   height: 100vh
+  z-index: 1
+
+  &--collapsed
+    width: 18rem
+
+    header
+      justify-content: space-between
+
+    li
+      width: inherit
+
+    footer
+      justify-content: space-between
+
+  &__header
+    padding: 1rem 1.5rem 0.5rem 1.5rem
+    display: flex
+    align-items: center
+    width: 100%
+    justify-content: center
+
+    &__btn
+      background-color: transparent
+      border: none
+
+
+  &__nav
+    width: 100%
+    list-style: none
+    padding: 0.938rem
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    &__item
+      margin-bottom: 0.625rem
+      padding: 0.625rem
+      box-sizing: border-box
+      border-radius: 10px
+
+      &--active, &:hover
+        background-color: var(--text-secondary)
+
+        a
+          color: var(--primary)
+
+          app-custom-icon
+            background-color: var(--primary)
+
+      &__link
+        display: flex
+        text-decoration: none
+        align-items: center
+        height: 1.8rem
+        color: var(--text-secondary)
+        transition: color .3s ease
+
+        span
+          margin-left: 0.625rem
+
+  &__footer
+    padding: 1rem
+    width: 100%
+    background-color: var(--secondary)
+    position: absolute
+    bottom: 0
+    display: flex
+    justify-content: center
+
+    .user
+      display: flex
+      gap: .8rem
+
+      &__info
+        display: flex
+        flex-direction: column
+
+        span
+          color: white
+          font-size: .9rem
+
+          &:last-child
+            color: #c1c1c1
+
+    .btn-signout
+      background-color: transparent
+      border: none
+

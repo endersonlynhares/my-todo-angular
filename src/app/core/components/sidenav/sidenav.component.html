@@ -1,17 +1,40 @@
-<nav class="navbar">
+<nav class="navbar" [ngClass]="collapsed ? 'navbar--collapsed' : ''">
+  <header class="navbar__header">
+    <img class="navbar__header__logo" *ngIf="collapsed" width="85" height="30" ngSrc="assets/logo-menu.svg" alt="">
+    <button class="navbar__header__btn" (click)="toggleColapse()">
+      <img width="24" height="24" ngSrc="assets/list.svg" alt="">
+    </button>
+  </header>
   <ul class="navbar__nav">
     <li
       *ngFor="let item of sideNavData"
       class="navbar__nav__item"
+      routerLinkActive="navbar__nav__item--active"
+      [routerLinkActiveOptions]="{exact: true}"
     >
       <a
         href=""
         class="navbar__nav__item__link"
         [routerLink]="item.routeLink"
       >
-        <img ngSrc="{{item.imagePath}}" width="24" height="24" alt="">
-        {{item.label}}
+        <app-custom-icon [path]="item.imagePath"></app-custom-icon>
+        <span *ngIf="collapsed">{{item.label}}</span>
       </a>
     </li>
+
   </ul>
+  <footer class="navbar__footer">
+    <div class="user" *ngIf="collapsed">
+      <app-custom-icon [width]="30" [path]="'assets/user.svg'"></app-custom-icon>
+      <div class="user__info">
+        <span>Enderson Linhares</span>
+        <span>Usuário</span>
+      </div>
+    </div>
+    <button class="btn-signout" (click)="logOut()">
+      <img ngSrc="assets/signout.svg" width="25" height="25" alt="">
+    </button>
+  </footer>
+
 </nav>
+

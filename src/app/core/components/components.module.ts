@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {SidenavComponent} from './sidenav/sidenav.component';
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterLinkActive} from "@angular/router";
+import {SharedModule} from "../../shared/shared.module";
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import {RouterLink} from "@angular/router";
   imports: [
     CommonModule,
     RouterLink,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterLinkActive,
+    SharedModule
   ],
   exports: [
     SidenavComponent
