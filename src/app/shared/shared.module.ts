@@ -1,19 +1,23 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { InputAuthComponent } from './input-auth/input-auth.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {InputAuthComponent} from './input-auth/input-auth.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { ButtonAuthComponent } from './button-auth/button-auth.component';
-import { FieldControlErrorComponent } from './field-control-error/field-control-error.component';
-import { CustomIconComponent } from './custom-icon/custom-icon.component';
-
-
+import {ButtonAuthComponent} from './button-auth/button-auth.component';
+import {FieldControlErrorComponent} from './field-control-error/field-control-error.component';
+import {CustomIconComponent} from './custom-icon/custom-icon.component';
+import {CommonHeaderComponent} from './common-header/common-header.component';
+import {SvgListBulletedComponent} from "./svg-components/list-bulleted";
+import {SvgRoundInboxComponent} from "./svg-components/round-inbox-component";
 
 @NgModule({
   declarations: [
     InputAuthComponent,
     ButtonAuthComponent,
     FieldControlErrorComponent,
-    CustomIconComponent
+    CustomIconComponent,
+    CommonHeaderComponent,
+    SvgListBulletedComponent,
+    SvgRoundInboxComponent,
   ],
   imports: [
     CommonModule,
@@ -21,10 +25,14 @@ import { CustomIconComponent } from './custom-icon/custom-icon.component';
     FormsModule,
     ReactiveFormsModule
   ],
-    exports: [
-        InputAuthComponent,
-        ButtonAuthComponent,
-        CustomIconComponent
-    ]
+  exports: [
+    InputAuthComponent,
+    ButtonAuthComponent,
+    CustomIconComponent,
+    CommonHeaderComponent,
+    SvgListBulletedComponent,
+    SvgRoundInboxComponent
+  ]
 })
-export class SharedModule { }
+export class SharedModule {
+}
