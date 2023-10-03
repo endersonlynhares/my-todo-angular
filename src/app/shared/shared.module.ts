@@ -8,6 +8,7 @@ import {CustomIconComponent} from './custom-icon/custom-icon.component';
 import {CommonHeaderComponent} from './common-header/common-header.component';
 import {SvgListBulletedComponent} from "./svg-components/list-bulleted";
 import {SvgRoundInboxComponent} from "./svg-components/round-inbox-component";
+import {SvgArrowComponent} from "./svg-components/arrow";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {SvgRoundInboxComponent} from "./svg-components/round-inbox-component";
     CommonHeaderComponent,
     SvgListBulletedComponent,
     SvgRoundInboxComponent,
+    SvgArrowComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import {SvgRoundInboxComponent} from "./svg-components/round-inbox-component";
     CustomIconComponent,
     CommonHeaderComponent,
     SvgListBulletedComponent,
-    SvgRoundInboxComponent
+    SvgRoundInboxComponent,
+    SvgArrowComponent
   ]
 })
 export class SharedModule {

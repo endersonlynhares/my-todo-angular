@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./filter.component.sass']
 })
 export class FilterComponent {
+  filterActive: boolean = true
+
+  toggleCollapse(){
+    this.filterActive = !this.filterActive
+  }
 
 }

@@ -1,0 +1,41 @@
+.filter
+  box-sizing: border-box
+  background-color: #fff
+  border-radius: 10px
+  height: 48px
+  transition: all 0.2s ease
+  &--activated
+    height: 140px
+
+  &__header
+    padding: 1.2rem
+    display: flex
+    height: 48px
+    align-items: center
+    justify-content: space-between
+    &__button
+      background-color: transparent
+      border: none
+      transition: transform 0.3s
+      &--rotate
+        transform: rotate(180deg)
+  &__body
+    padding: 1.2rem 1rem
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr
+    gap: 1rem
+    &__group-select
+      width: 100%
+      display: flex
+      flex-direction: column
+      label
+        color: #343A40
+      select
+        border-radius: 3px
+        padding: 10px
+        background-color: transparent
+        border-color: rgba(51, 51, 51, 0.1)
+
+.divider
+  border: 0.5px solid rgba(51, 51, 51, 0.1)
+  margin: -8px 1rem

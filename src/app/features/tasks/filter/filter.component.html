@@ -1,1 +1,39 @@
-<p>filter works!</p>
+<div
+  class="filter"
+  [ngClass]="{
+  'filter--activated': filterActive
+  }"
+>
+  <header class="filter__header">
+    <span>Filtros</span>
+    <button class="filter__header__button" (click)="toggleCollapse()"
+            [ngClass]="{
+      'filter__header__button--rotate': filterActive
+      }"
+    >
+      <svg-arrow></svg-arrow>
+    </button>
+  </header>
+  <div class="divider"></div>
+  <div *ngIf="filterActive" class="filter__body">
+    <div class="filter__body__group-select">
+      <label for="list">Lista</label>
+      <select name="list" id="list">
+        <option value="">Selecione aqui</option>
+      </select>
+    </div>
+    <div class="filter__body__group-select">
+      <label for="date">Data de Conclusão</label>
+      <select name="date" id="date">
+        <option value="">Selecione aqui</option>
+      </select>
+    </div>
+    <div class="filter__body__group-select">
+      <label for="order">Ordernar por</label>
+      <select name="order" id="order">
+        <option value="">Selecione aqui</option>
+      </select>
+    </div>
+  </div>
+</div>
+
