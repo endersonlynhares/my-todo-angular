@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {User} from "../../../domain-types/models/User";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-common-layout',
@@ -6,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./common-layout.component.sass']
 })
 export class CommonLayoutComponent {
-
 }

@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {TokenResponse} from "../../domain-types/models/TokenResponse";
+import {User} from "../../domain-types/models/User";
 
-interface User {
+interface UserLogin {
   name: string,
   password: string
 }
@@ -27,11 +29,12 @@ export class ApiService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  loginUser(user: User) {
-    this.http.post(`${apiURL}/Auth/login`, user).subscribe({
-      next: (data: any) => {
-        localStorage.setItem('token', data.accessToken);
-        localStorage.setItem('name', data.user.name);
+  loginUser(user: UserLogin) {
+    this.http.post<TokenResponse>(`${apiURL}/Auth/login`, user).subscribe({
+      next: (data: TokenResponse) => {
+        localStorage.setItem('accessToken', data.accessToken);
+        localStorage.setItem('expiresIn', data.expiresIn);
+        localStorage.setItem('user', JSON.stringify(data.user));
         this.router.navigate(['']).then()
       },
       error: (err: any) => {
@@ -40,7 +43,7 @@ export class ApiService {
     })
   }
 
-  getLists(){
+  getLists() {
     this.http.get(`${apiURL}/tasks`).subscribe(v => console.log('dasd'))
   }
 

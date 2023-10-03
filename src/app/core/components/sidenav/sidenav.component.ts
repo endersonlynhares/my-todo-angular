@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {sideNavData} from "./sidenav-data";
 import {AuthService} from "../../services/auth.service";
+import {User} from "../../../domain-types/models/User";
 
 @Component({
   selector: 'app-sidenav',
@@ -10,10 +11,12 @@ import {AuthService} from "../../services/auth.service";
 export class SidenavComponent {
   collapsed: boolean = false
   sideNavData = sideNavData
+  user: User | null
 
   constructor(
     private authService: AuthService
   ) {
+    this.user = authService.getUser()
   }
 
   toggleColapse() {

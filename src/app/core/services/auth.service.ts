@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 import * as jwt_decode from 'jwt-decode';
+import {User} from "../../domain-types/models/User";
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +14,29 @@ export class AuthService {
   }
 
   logoutUser() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("name");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("expiresIn");
+    localStorage.removeItem("user");
     this.router.navigate(['/signin']).then()
   }
 
   get isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('accessToken');
     return !!token;
   }
 
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return localStorage.getItem('accessToken');
+  }
+
+  getUser(): User | null {
+    const user = localStorage.getItem('user')
+    if (user !== null) {
+      return JSON.parse(user)
+    }
+
+    return null
+
   }
 
   // public decodePayloadJWT(): any {
