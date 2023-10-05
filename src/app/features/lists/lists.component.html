@@ -1,3 +1,31 @@
 <app-common-header>
   <svg-list width="30" height="30" color="#202342"></svg-list>
 </app-common-header>
+<div class="lists">
+  <table>
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let i of [0, 1, 2, 3, 4, 5]"
+      [ngStyle]="{'background-color': i % 2 == 0 ? '#F4F5F6' : '#F9F9F9'}"
+    >
+      <td>Lorem Ipsum</td>
+      <td>Lorem Ipsum</td>
+      <td class="actions">
+        <button class="actions__btn actions__btn--pencil">
+          <svg-pencil width="16" height="16"></svg-pencil>
+        </button>
+        <button class="actions__btn actions__btn--trash">
+          <svg-trash width="16" height="16"></svg-trash>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
