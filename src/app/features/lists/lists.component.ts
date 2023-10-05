@@ -8,5 +8,7 @@ import {ApiService} from "../../core/services/api.service";
   styleUrls: ['./lists.component.sass']
 })
 export class ListsComponent {
-
+  onCallParent() {
+    console.log('component lista')
+  }
 }

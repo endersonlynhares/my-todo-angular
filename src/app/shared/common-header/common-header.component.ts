@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-common-header',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./common-header.component.sass']
 })
 export class CommonHeaderComponent {
+  @Input() title!: string
+  @Output() callParent = new EventEmitter<any>()
 
+  submit(): void {
+    this.callParent.emit(null)
+  }
 }
