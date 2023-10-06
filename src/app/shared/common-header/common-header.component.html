@@ -4,10 +4,9 @@
       <ng-content></ng-content>
     </div>
     <div class="header__info__title">
-      <h3>Tarefas</h3>
-      <span>Página de gerenciamento das tarefas</span>
+      <h3>{{title | titlecase}}</h3>
+      <span>Página de gerenciamento das {{title | lowercase}}</span>
     </div>
   </div>
-
-  <button class="header__button">Novo</button>
+    <button (click)="submit()" class="header__button">Novo</button>
 </header>

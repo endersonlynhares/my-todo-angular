@@ -9,7 +9,8 @@ import {CommonHeaderComponent} from './common-header/common-header.component';
 import {SvgListBulletedComponent} from "./svg-components/list-bulleted";
 import {SvgRoundInboxComponent} from "./svg-components/round-inbox-component";
 import {SvgArrowComponent} from "./svg-components/arrow";
-import {SvgClockComponent} from "./svg-components/clock";
+import {SvgTrashComponent} from "./svg-components/trash";
+import {SvgPencilComponent} from "./svg-components/pencil";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,9 @@ import {SvgClockComponent} from "./svg-components/clock";
     SvgRoundInboxComponent,
     SvgArrowComponent,
     SvgClockComponent
+    SvgArrowComponent,
+    SvgTrashComponent,
+    SvgPencilComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +40,9 @@ import {SvgClockComponent} from "./svg-components/clock";
     CommonHeaderComponent,
     SvgListBulletedComponent,
     SvgRoundInboxComponent,
+    SvgArrowComponent,
+    SvgTrashComponent,
+    SvgPencilComponent
     SvgArrowComponent,
     SvgClockComponent
   ]

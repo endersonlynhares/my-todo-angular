@@ -1,0 +1,36 @@
+.lists
+  background-color: white
+  border-radius: 10px
+  padding: 12px
+
+table
+  width: 100%
+  table-layout: fixed
+  text-align: center
+  border-collapse: collapse
+  border: 2px solid #D9DBDE
+  tr
+    border: 2px solid #D9DBDE
+  td, th
+    padding: 13px
+  thead
+    color: #343A40
+    background-color: #E9ECEF
+    th
+      text-align: center
+  .actions
+    display: flex
+    justify-content: center
+    gap: 8px
+    &__btn
+      width: 30px
+      display: flex
+      align-items: center
+      justify-content: center
+      border-radius: 4px
+      height: 30px
+      border: none
+      &--pencil
+        background-color: var(--warning)
+      &--trash
+        background-color: var(--danger)

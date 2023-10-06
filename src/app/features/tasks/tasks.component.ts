@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-tasks',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./tasks.component.sass']
 })
 export class TasksComponent {
-
+  onCallParent() {
+    console.log('components tasks')
+  }
 }
