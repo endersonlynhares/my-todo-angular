@@ -11,6 +11,7 @@ import {SvgRoundInboxComponent} from "./svg-components/round-inbox-component";
 import {SvgArrowComponent} from "./svg-components/arrow";
 import {SvgTrashComponent} from "./svg-components/trash";
 import {SvgPencilComponent} from "./svg-components/pencil";
+import {SvgClockComponent} from "./svg-components/clock";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {SvgPencilComponent} from "./svg-components/pencil";
     SvgListBulletedComponent,
     SvgRoundInboxComponent,
     SvgArrowComponent,
-    SvgClockComponent
+    SvgClockComponent,
     SvgArrowComponent,
     SvgTrashComponent,
     SvgPencilComponent
@@ -42,7 +43,7 @@ import {SvgPencilComponent} from "./svg-components/pencil";
     SvgRoundInboxComponent,
     SvgArrowComponent,
     SvgTrashComponent,
-    SvgPencilComponent
+    SvgPencilComponent,
     SvgArrowComponent,
     SvgClockComponent
   ]
