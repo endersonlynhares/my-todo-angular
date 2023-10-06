@@ -12,6 +12,9 @@ import {SvgArrowComponent} from "./svg-components/arrow";
 import {SvgTrashComponent} from "./svg-components/trash";
 import {SvgPencilComponent} from "./svg-components/pencil";
 import {SvgClockComponent} from "./svg-components/clock";
+import {SvgDotsComponent} from "./svg-components/dots";
+import {SvgCheckedComponent} from "./svg-components/checked";
+import {SvgComponentsModule} from "./svg-components/svg-components-module";
 
 @NgModule({
   declarations: [
@@ -20,32 +23,20 @@ import {SvgClockComponent} from "./svg-components/clock";
     FieldControlErrorComponent,
     CustomIconComponent,
     CommonHeaderComponent,
-    SvgListBulletedComponent,
-    SvgRoundInboxComponent,
-    SvgArrowComponent,
-    SvgClockComponent,
-    SvgArrowComponent,
-    SvgTrashComponent,
-    SvgPencilComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SvgComponentsModule
   ],
   exports: [
     InputAuthComponent,
     ButtonAuthComponent,
     CustomIconComponent,
     CommonHeaderComponent,
-    SvgListBulletedComponent,
-    SvgRoundInboxComponent,
-    SvgArrowComponent,
-    SvgTrashComponent,
-    SvgPencilComponent,
-    SvgArrowComponent,
-    SvgClockComponent
+    SvgComponentsModule
   ]
 })
 export class SharedModule {

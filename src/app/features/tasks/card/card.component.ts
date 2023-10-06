@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./card.component.sass']
 })
 export class CardComponent {
+  showActions: boolean = false
+
+  onShowActions() {
+    this.showActions = !this.showActions
+  }
 
 }

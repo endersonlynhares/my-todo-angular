@@ -7,13 +7,22 @@
       <span class="card__info__description">Task description</span>
     </div>
     <div class="card__info__actions">
-      <button class="card__info__actions__btn-arrow">
-        <svg-arrow></svg-arrow>
+      <button (click)="onShowActions()" class="card__info__actions__btn-arrow">
+        <svg-dots width="15" height="15"/>
       </button>
-      <ul class="card__info__actions__body">
-        <li>Concluir</li>
-        <li>Editar</li>
-        <li>Remover</li>
+      <ul *ngIf="showActions" class="card__info__actions__body">
+        <li>
+          <svg-checked/>
+          Concluir
+        </li>
+        <li>
+          <svg-pencil color="#25294C" height="12" width="12"/>
+          Editar
+        </li>
+        <li>
+          <svg-trash color="#25294C" height="12" width="12"/>
+          Remover
+        </li>
       </ul>
     </div>
   </div>

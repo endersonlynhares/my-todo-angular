@@ -3,12 +3,12 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {TokenResponse} from "../../domain-types/models/TokenResponse";
 import {User} from "../../domain-types/models/User";
+import {AssignmentListPaged} from "../../domain-types/models/AssigmentList";
 
 interface UserLogin {
   name: string,
   password: string
 }
-
 
 interface registerUserData {
   name: string,
@@ -43,8 +43,8 @@ export class ApiService {
     })
   }
 
-  getLists() {
-    this.http.get(`${apiURL}/tasks`).subscribe(v => console.log('dasd'))
+  getAssignmentList() {
+    this.http.get<AssignmentListPaged>(`${apiURL}/AssignmentList`).subscribe(data => console.log(data))
   }
 
   registerUser(newUser: registerUserData) {
