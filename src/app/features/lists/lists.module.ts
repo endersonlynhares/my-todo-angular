@@ -4,7 +4,6 @@ import {ListsComponent} from './lists.component';
 import {ListsRoutingModule} from "./lists-routing.module";
 import {SharedModule} from "../../shared/shared.module";
 
-
 @NgModule({
   declarations: [
     ListsComponent
@@ -12,7 +11,7 @@ import {SharedModule} from "../../shared/shared.module";
     imports: [
         CommonModule,
         ListsRoutingModule,
-        SharedModule
+        SharedModule,
     ]
 })
 export class ListsModule {

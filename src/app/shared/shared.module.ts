@@ -6,15 +6,9 @@ import {ButtonAuthComponent} from './button-auth/button-auth.component';
 import {FieldControlErrorComponent} from './field-control-error/field-control-error.component';
 import {CustomIconComponent} from './custom-icon/custom-icon.component';
 import {CommonHeaderComponent} from './common-header/common-header.component';
-import {SvgListBulletedComponent} from "./svg-components/list-bulleted";
-import {SvgRoundInboxComponent} from "./svg-components/round-inbox-component";
-import {SvgArrowComponent} from "./svg-components/arrow";
-import {SvgTrashComponent} from "./svg-components/trash";
-import {SvgPencilComponent} from "./svg-components/pencil";
-import {SvgClockComponent} from "./svg-components/clock";
-import {SvgDotsComponent} from "./svg-components/dots";
-import {SvgCheckedComponent} from "./svg-components/checked";
 import {SvgComponentsModule} from "./svg-components/svg-components-module";
+import { PopupComponent } from './popup/popup.component';
+import {MaterialModule} from "../core/material.module";
 
 @NgModule({
   declarations: [
@@ -23,13 +17,15 @@ import {SvgComponentsModule} from "./svg-components/svg-components-module";
     FieldControlErrorComponent,
     CustomIconComponent,
     CommonHeaderComponent,
+    PopupComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     ReactiveFormsModule,
-    SvgComponentsModule
+    SvgComponentsModule,
+    MaterialModule
   ],
   exports: [
     InputAuthComponent,
