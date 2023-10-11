@@ -3,6 +3,7 @@ import {ApiService} from "../../core/services/api.service";
 import {AssignmentList} from "../../domain-types/models/AssigmentList";
 import {MatDialog} from "@angular/material/dialog";
 import {PopupComponent} from "../../shared/popup/popup.component";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-lists',
@@ -14,7 +15,7 @@ export class ListsComponent implements OnInit {
 
   constructor(
     private api: ApiService,
-    private newListDialog: MatDialog
+    private newListDialog: MatDialog,
   ) {
   }
 
@@ -24,8 +25,8 @@ export class ListsComponent implements OnInit {
 
   onCallParent() {
     this.newListDialog.open(PopupComponent, {
-      width: '60%',
-      panelClass: 'bg-color',
+      width: '750px',
+      panelClass: 'dialog-colorful',
       data: {
         title: 'Create List'
       }

@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {TokenResponse} from "../../domain-types/models/TokenResponse";
 import {User} from "../../domain-types/models/User";
-import {AssignmentListPaged} from "../../domain-types/models/AssigmentList";
+import {AssignmentList, AssignmentListPaged} from "../../domain-types/models/AssigmentList";
 
 interface UserLogin {
   name: string,
@@ -45,6 +45,17 @@ export class ApiService {
 
   getAssignmentList() {
     this.http.get<AssignmentListPaged>(`${apiURL}/AssignmentList`).subscribe(data => console.log(data))
+  }
+
+  addAssignmentList(data: AssignmentList) {
+    this.http.post<AssignmentList>(`${apiURL}/AssignmentList`, data).subscribe({
+      next: (data) => {
+        console.log('Lista criada com sucesso!')
+      },
+      error: err => {
+        alert(err)
+      }
+    })
   }
 
   registerUser(newUser: registerUserData) {
