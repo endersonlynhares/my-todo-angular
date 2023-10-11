@@ -1,0 +1,18 @@
+<form [formGroup]="formulario" (ngSubmit)="createList()">
+  <h1 mat-dialog-title>{{inputData.title}}</h1>
+  <div mat-dialog-content>
+    <div class="input-group">
+      <label for="name">Nome: </label>
+      <input
+        formControlName="name"
+        type="text"
+        id="name"
+        name="name">
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <a class="btn btn-red" (click)="closePopup()">Fechar</a>
+    <button class="btn btn-green" type="submit">Salvar</button>
+  </div>
+
+</form>
