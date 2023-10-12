@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../../core/services/api.service";
 import {AssignmentList} from "../../domain-types/models/AssigmentList";
 import {MatDialog} from "@angular/material/dialog";
-import {PopupComponent} from "../../shared/popup/popup.component";
-import {FormBuilder} from "@angular/forms";
+import {CreateListDialogComponent} from "../../shared/dialogs/create-list-dialog/create-list-dialog.component";
 
 @Component({
   selector: 'app-lists',
@@ -24,7 +23,7 @@ export class ListsComponent implements OnInit {
   }
 
   onCallParent() {
-    this.newListDialog.open(PopupComponent, {
+    this.newListDialog.open(CreateListDialogComponent, {
       width: '750px',
       panelClass: 'dialog-colorful',
       data: {

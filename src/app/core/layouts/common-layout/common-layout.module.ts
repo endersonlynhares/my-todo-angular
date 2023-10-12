@@ -4,7 +4,6 @@ import {CommonLayoutComponent} from './common-layout.component';
 import {RouterModule} from "@angular/router";
 import {ComponentsModule} from "../../components/components.module";
 
-
 @NgModule({
   declarations: [
     CommonLayoutComponent

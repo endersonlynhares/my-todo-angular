@@ -7,8 +7,9 @@ import {FieldControlErrorComponent} from './field-control-error/field-control-er
 import {CustomIconComponent} from './custom-icon/custom-icon.component';
 import {CommonHeaderComponent} from './common-header/common-header.component';
 import {SvgComponentsModule} from "./svg-components/svg-components-module";
-import { PopupComponent } from './popup/popup.component';
+import {PopupComponent} from './popup/popup.component';
 import {MaterialModule} from "../core/material.module";
+import {DialogsModule} from "./dialogs/dialogs.module";
 
 @NgModule({
   declarations: [
@@ -25,14 +26,15 @@ import {MaterialModule} from "../core/material.module";
     FormsModule,
     ReactiveFormsModule,
     SvgComponentsModule,
-    MaterialModule
+    MaterialModule,
+    DialogsModule
   ],
   exports: [
     InputAuthComponent,
     ButtonAuthComponent,
     CustomIconComponent,
     CommonHeaderComponent,
-    SvgComponentsModule
+    SvgComponentsModule,
   ]
 })
 export class SharedModule {

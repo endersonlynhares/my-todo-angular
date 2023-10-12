@@ -3,12 +3,12 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {SidenavComponent} from './sidenav/sidenav.component';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {SharedModule} from "../../shared/shared.module";
-import {DialogTemplateComponent} from "./dialog-template/dialog-template";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MaterialModule} from "../material.module";
 
 @NgModule({
   declarations: [
     SidenavComponent,
-    DialogTemplateComponent
   ],
   imports: [
     CommonModule,
@@ -16,6 +16,9 @@ import {DialogTemplateComponent} from "./dialog-template/dialog-template";
     NgOptimizedImage,
     RouterLinkActive,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule
   ],
   exports: [
     SidenavComponent

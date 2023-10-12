@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {TokenResponse} from "../../domain-types/models/TokenResponse";
 import {User} from "../../domain-types/models/User";
 import {AssignmentList, AssignmentListPaged} from "../../domain-types/models/AssigmentList";
+import {Assignment} from "../../domain-types/models/Assignment";
 
 interface UserLogin {
   name: string,
@@ -53,8 +54,22 @@ export class ApiService {
         console.log('Lista criada com sucesso!')
       },
       error: err => {
-        alert(err)
+        console.log(err.message)
       }
+    })
+  }
+
+  addAssignment(data: Assignment) {
+    this.http.post<Assignment>(`${apiURL}/Assignments`, {
+      description: data.description,
+      deadline: data.deadline,
+      assignmentListId: data.assignmentListId
+    }).subscribe({
+      next: (response) => {
+        console.log('Task criada com sucesso.')
+        console.log(response)
+      },
+      error: err => console.log(err.message)
     })
   }
 

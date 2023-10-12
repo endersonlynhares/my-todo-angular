@@ -3,11 +3,11 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SharedModule} from "./shared/shared.module";
-import {CoreModule} from "./core/core.module";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {TokenInterceptorService} from "./core/services/token-interceptor.service";
 import {MaterialModule} from "./core/material.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CoreModule} from "./core/core.module";
 
 @NgModule({
   declarations: [
@@ -17,9 +17,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule
   ],
   providers: [
     {

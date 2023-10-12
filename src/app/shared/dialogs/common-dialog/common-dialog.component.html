@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>{{inputData.title}}</h1>
+<div mat-dialog-content>
+  <ng-template *ngTemplateOutlet="contentTemplate"></ng-template>
+</div>
+<div mat-dialog-actions>
+  <a class="btn btn-red" (click)="closePopup()">Fechar</a>
+  <button class="btn btn-green" type="submit">Salvar</button>
+</div>
+

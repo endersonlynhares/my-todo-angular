@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {CreateTaskDialogComponent} from "../../shared/dialogs/create-task-dialog/create-task-dialog.component";
 
 @Component({
   selector: 'app-tasks',
@@ -6,7 +8,20 @@ import {Component} from '@angular/core';
   styleUrls: ['./tasks.component.sass']
 })
 export class TasksComponent {
-  onCallParent() {
-    console.log('components tasks')
+
+  constructor(
+    private newListDialog: MatDialog,
+  ) {
   }
+
+  onCallParent() {
+    this.newListDialog.open(CreateTaskDialogComponent, {
+      width: '750px',
+      panelClass: 'dialog-colorful',
+      data: {
+        title: 'Cadastro de Tarefas'
+      }
+    })
+  }
+
 }

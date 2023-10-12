@@ -1,0 +1,31 @@
+<form [formGroup]="formulario" (ngSubmit)="createTask()">
+  <app-common-dialog [contentTemplate]="dialogContentTemplate"></app-common-dialog>
+  <ng-template #dialogContentTemplate>
+    <div class="container-inputs">
+      <app-input-dialog
+        [control]="formulario.get('description')"
+        field="description"
+        formControlName="description"
+        type="text"
+        label="Nome"
+        id="description"
+      ></app-input-dialog>
+      <app-input-dialog
+        [control]="formulario.get('assignmentListId')"
+        field="assignmentListId"
+        formControlName="assignmentListId"
+        type="text"
+        label="Lista"
+        id="assignmentListId"
+      ></app-input-dialog>
+      <app-input-dialog
+        [control]="formulario.get('deadline')"
+        field="deadline"
+        formControlName="deadline"
+        type="text"
+        label="Data de conclusão"
+        id="deadline"
+      ></app-input-dialog>
+    </div>
+  </ng-template>
+</form>
