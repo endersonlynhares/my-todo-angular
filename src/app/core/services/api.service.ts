@@ -44,7 +44,7 @@ export class ApiService {
   }
 
   getAssignmentList() {
-    this.http.get<AssignmentListPaged>(`${apiURL}/AssignmentList`).subscribe(data => console.log(data))
+    return this.http.get<AssignmentListPaged>(`${apiURL}/AssignmentList`)
   }
 
   addAssignmentList(data: AssignmentList) {
