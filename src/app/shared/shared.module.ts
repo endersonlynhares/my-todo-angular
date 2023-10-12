@@ -7,7 +7,6 @@ import {FieldControlErrorComponent} from './field-control-error/field-control-er
 import {CustomIconComponent} from './custom-icon/custom-icon.component';
 import {CommonHeaderComponent} from './common-header/common-header.component';
 import {SvgComponentsModule} from "./svg-components/svg-components-module";
-import {PopupComponent} from './popup/popup.component';
 import {MaterialModule} from "../core/material.module";
 import {DialogsModule} from "./dialogs/dialogs.module";
 
@@ -18,7 +17,6 @@ import {DialogsModule} from "./dialogs/dialogs.module";
     FieldControlErrorComponent,
     CustomIconComponent,
     CommonHeaderComponent,
-    PopupComponent,
   ],
   imports: [
     CommonModule,
