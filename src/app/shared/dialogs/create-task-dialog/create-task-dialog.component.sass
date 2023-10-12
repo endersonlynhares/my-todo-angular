@@ -7,13 +7,27 @@
 label
   color: #343A40
 
-select
-  width: 100%
+mat-select
+  max-width: 340px
+  overflow: auto
+  position: relative
 
   border: 1px solid #CED4DA
   border-radius: 6px
   height: 45px
   padding: 8px
+
+  options
+    max-height: 45px
+    overflow-y: auto
+    position: absolute
+    display: none
+    background-color: #f1f1f1
+    list-style: none
+    margin: 0
+    padding: 0
+    border: 1px solid #ccc
+    z-index: 1
 
   &:focus
     border: 1px solid #CED4DA
