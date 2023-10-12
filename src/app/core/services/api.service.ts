@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {TokenResponse} from "../../domain-types/models/TokenResponse";
-import {User} from "../../domain-types/models/User";
 import {AssignmentList, AssignmentListPaged} from "../../domain-types/models/AssigmentList";
 import {Assignment} from "../../domain-types/models/Assignment";
 
