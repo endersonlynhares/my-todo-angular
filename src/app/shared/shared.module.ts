@@ -12,6 +12,7 @@ import {CreateTaskDialogComponent} from "./dialogs/create-task-dialog/create-tas
 import {CreateListDialogComponent} from "./dialogs/create-list-dialog/create-list-dialog.component";
 import {CommonDialogComponent} from "./dialogs/common-dialog/common-dialog.component";
 import {InputDialogComponent} from "./dialogs/input-dialog/input-dialog.component";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {InputDialogComponent} from "./dialogs/input-dialog/input-dialog.componen
     ReactiveFormsModule,
     SvgComponentsModule,
     MaterialModule,
+    InfiniteScrollModule,
   ],
   exports: [
     InputAuthComponent,

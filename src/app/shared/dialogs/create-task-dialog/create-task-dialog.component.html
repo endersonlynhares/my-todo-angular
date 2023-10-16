@@ -10,16 +10,25 @@
         label="Nome"
         id="description"
       ></app-input-dialog>
-      <div>
+      <div
+      >
         <label for="assignmentListId">Lista</label>
-        <select formControlName="assignmentListId" name="assignmentListId" id="assignmentListId">
-          <option *ngFor="let list of lists" value="{{list.id}}">{{list.name}}</option>
-        </select>
+        <mat-select
+          placeholder="Lista relacionada"
+          formControlName="assignmentListId"
+          id="assignmentListId"
+          (scroll)="scrollHandler($event)"
+          class="insights-results"
+          #matSelect
+        >
+          <mat-option *ngFor="let list of lists" [value]="list.id">{{list.name}}</mat-option>
+        </mat-select>
         <app-field-control-error
           field="assignmentListId"
           [control]="formulario.get('assignmentListId')"
         />
       </div>
+
       <app-input-dialog
         [control]="formulario.get('deadline')"
         field="deadline"
