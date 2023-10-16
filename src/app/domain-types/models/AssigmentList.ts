@@ -1,5 +1,3 @@
-import {Assignment} from "./Assignment";
-
 export interface AddAssignmentList {
   name: string
 }
