@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {ApiService} from "../../../core/services/api.service";
 import {BaseFormComponent} from "../../form-base/form-base";
 
@@ -18,7 +18,7 @@ export class CreateListDialogComponent extends BaseFormComponent implements OnIn
 
   override ngOnInit() {
     this.formulario = this.buildr.group({
-      name: [null]
+      name: [null, [Validators.required, Validators.minLength(5)]]
     })
   }
 

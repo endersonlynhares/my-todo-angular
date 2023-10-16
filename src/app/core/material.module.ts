@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import {NgModule} from "@angular/core";
 import {MatInputModule} from "@angular/material/input"
 import {MatSelectModule} from "@angular/material/select"
 import {MatAutocompleteModule} from "@angular/material/autocomplete"
@@ -21,7 +21,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox"
 import {MatDialogModule} from "@angular/material/dialog"
 
 @NgModule({
-  exports:[
+  exports: [
     MatInputModule,
     MatSelectModule,
     MatAutocompleteModule,
@@ -41,7 +41,9 @@ import {MatDialogModule} from "@angular/material/dialog"
     MatNativeDateModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
   ]
 })
-export class MaterialModule{}
+export class MaterialModule {
+}

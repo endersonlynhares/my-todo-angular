@@ -1,5 +1,5 @@
 <form [formGroup]="formulario" (ngSubmit)="createTask()">
-  <app-common-dialog [contentTemplate]="dialogContentTemplate"></app-common-dialog>
+  <app-common-dialog [disabled]="formulario.invalid" [contentTemplate]="dialogContentTemplate"></app-common-dialog>
   <ng-template #dialogContentTemplate>
     <div class="container-inputs">
       <app-input-dialog
@@ -15,6 +15,10 @@
         <select formControlName="assignmentListId" name="assignmentListId" id="assignmentListId">
           <option *ngFor="let list of lists" value="{{list.id}}">{{list.name}}</option>
         </select>
+        <app-field-control-error
+          field="assignmentListId"
+          [control]="formulario.get('assignmentListId')"
+        />
       </div>
       <app-input-dialog
         [control]="formulario.get('deadline')"
@@ -23,6 +27,15 @@
         type="date"
         label="Data de conclusão"
         id="deadline"
+      ></app-input-dialog>
+      <app-input-dialog
+        [control]="formulario.get('time')"
+        field="time"
+        step="2"
+        formControlName="time"
+        type="time"
+        label="Hora"
+        id="time"
       ></app-input-dialog>
     </div>
   </ng-template>

@@ -4,6 +4,6 @@
 </div>
 <div mat-dialog-actions>
   <a class="btn btn-red" (click)="closePopup()">Fechar</a>
-  <button class="btn btn-green" type="submit">Salvar</button>
+  <button [disabled]="disabled" class="btn btn-green" type="submit">Salvar</button>
 </div>
 

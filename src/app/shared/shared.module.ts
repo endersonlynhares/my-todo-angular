@@ -8,7 +8,10 @@ import {CustomIconComponent} from './custom-icon/custom-icon.component';
 import {CommonHeaderComponent} from './common-header/common-header.component';
 import {SvgComponentsModule} from "./svg-components/svg-components-module";
 import {MaterialModule} from "../core/material.module";
-import {DialogsModule} from "./dialogs/dialogs.module";
+import {CreateTaskDialogComponent} from "./dialogs/create-task-dialog/create-task-dialog.component";
+import {CreateListDialogComponent} from "./dialogs/create-list-dialog/create-list-dialog.component";
+import {CommonDialogComponent} from "./dialogs/common-dialog/common-dialog.component";
+import {InputDialogComponent} from "./dialogs/input-dialog/input-dialog.component";
 
 @NgModule({
   declarations: [
@@ -17,6 +20,10 @@ import {DialogsModule} from "./dialogs/dialogs.module";
     FieldControlErrorComponent,
     CustomIconComponent,
     CommonHeaderComponent,
+    CreateTaskDialogComponent,
+    CreateListDialogComponent,
+    CommonDialogComponent,
+    InputDialogComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +32,6 @@ import {DialogsModule} from "./dialogs/dialogs.module";
     ReactiveFormsModule,
     SvgComponentsModule,
     MaterialModule,
-    DialogsModule
   ],
   exports: [
     InputAuthComponent,
@@ -33,6 +39,11 @@ import {DialogsModule} from "./dialogs/dialogs.module";
     CustomIconComponent,
     CommonHeaderComponent,
     SvgComponentsModule,
+    FieldControlErrorComponent,
+    CreateTaskDialogComponent,
+    CreateListDialogComponent,
+    CommonDialogComponent,
+    InputDialogComponent
   ]
 })
 export class SharedModule {

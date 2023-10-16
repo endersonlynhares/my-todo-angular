@@ -1,9 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {ApiService} from "../../../core/services/api.service";
 import {BaseFormComponent} from "../../form-base/form-base";
 import {AssignmentList} from "../../../domain-types/models/AssigmentList";
 import {Subscription} from "rxjs";
+import {FormValidations} from "../../form-validations";
+import * as moment from "moment"
 
 @Component({
   selector: 'app-create-task-dialog',
@@ -23,16 +25,17 @@ export class CreateTaskDialogComponent extends BaseFormComponent implements OnDe
 
   override ngOnInit() {
 
+    this.formulario = this.buildr.group({
+      description: ['', [Validators.required, Validators.minLength(5)]],
+      deadline: ['', [Validators.required, FormValidations.dateValidator()]],
+      assignmentListId: ['', [Validators.required]],
+      time: ['', Validators.required]
+    })
+
     this.subscription = this.api.getAssignmentList().subscribe({
       next: (data) => {
         this.lists = data.items
       }
-    })
-
-    this.formulario = this.buildr.group({
-      description: [null],
-      deadline: [null],
-      assignmentListId: [null]
     })
   }
 
@@ -44,7 +47,13 @@ export class CreateTaskDialogComponent extends BaseFormComponent implements OnDe
   }
 
   createTask() {
-    let date = new Date(this.formulario.get('deadline')?.value).toISOString()
-    this.api.addAssignment({...this.formulario.value, deadline: date})
+    let date: moment.Moment = moment.utc(this.formulario.get('deadline')?.value).local()
+    this.formulario.value.deadline = date.format('YYYY-MM-DD') + "T" + this.formulario.get('time')?.value + ":00.000Z"
+    this.api.addAssignment({
+      deadline: this.formulario.value.dealine,
+      assignmentListId: this.formulario.value.assignmentListId,
+      description: this.formulario.value.description
+    });
   }
+
 }

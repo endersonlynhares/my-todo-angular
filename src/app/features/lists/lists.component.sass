@@ -3,42 +3,35 @@
   border-radius: 10px
   padding: 12px
 
-table
-  width: 100%
-  table-layout: fixed
-  text-align: center
-  border-collapse: collapse
-  border: 2px solid #D9DBDE
-
-  tr
+  &__table
+    width: 100%
+    table-layout: fixed
+    text-align: center
+    border-collapse: collapse
     border: 2px solid #D9DBDE
 
-  td, th
-    padding: 13px
+    tr
+      border: 3px solid #D9DBDE
 
-  thead
-    color: #343A40
-    background-color: #E9ECEF
+    thead
+      color: #343A40 !important
+      background-color: #E9ECEF !important
 
-    th
-      text-align: center
+      th
+        text-align: center
 
-  .actions
+
+  &__btn
+    width: 30px
     display: flex
+    align-items: center
     justify-content: center
-    gap: 8px
+    border-radius: 4px
+    height: 30px
+    border: none
 
-    &__btn
-      width: 30px
-      display: flex
-      align-items: center
-      justify-content: center
-      border-radius: 4px
-      height: 30px
-      border: none
+    &--pencil
+      background-color: var(--warning)
 
-      &--pencil
-        background-color: var(--warning)
-
-      &--trash
-        background-color: var(--danger)
+    &--trash
+      background-color: var(--danger)

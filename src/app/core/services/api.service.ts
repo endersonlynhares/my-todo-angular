@@ -43,8 +43,14 @@ export class ApiService {
     })
   }
 
-  getAssignmentList() {
-    return this.http.get<AssignmentListPaged>(`${apiURL}/AssignmentList`)
+  getAssignmentList(pageSize: number = 10, pageIndex: number = 1) {
+    return this.http.get<AssignmentListPaged>(`${apiURL}/AssignmentList?Page=${pageIndex}&PerPage=${pageSize}`)
+  }
+
+  getAllAssignments() {
+    return (
+      this.http.get<any>(`${apiURL}/Assignments`).subscribe(data => console.log(data))
+    )
   }
 
   addAssignmentList(data: AssignmentList) {
@@ -70,6 +76,16 @@ export class ApiService {
       },
       error: err => console.log(err.message)
     })
+  }
+
+  deleteAssignmentList(id: string) {
+    this.http.delete(`${apiURL}/AssignmentList/${id}`).subscribe(data => {
+      alert('lista deletada com sucesso.')
+    })
+  }
+
+  updateAssignmentList(newName: string, id: string) {
+
   }
 
   registerUser(newUser: registerUserData) {

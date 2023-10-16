@@ -8,6 +8,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 })
 export class CommonDialogComponent {
   inputData!: any
+  @Input() disabled: boolean = false
   @Input() contentTemplate: any
 
   constructor(

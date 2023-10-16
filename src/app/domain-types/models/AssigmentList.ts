@@ -7,7 +7,6 @@ export interface AddAssignmentList {
 export interface AssignmentList {
   id: string,
   name: string,
-  assignments: Assignment[]
 }
 
 export interface AssignmentListPaged {

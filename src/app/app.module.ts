@@ -8,6 +8,7 @@ import {TokenInterceptorService} from "./core/services/token-interceptor.service
 import {MaterialModule} from "./core/material.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CoreModule} from "./core/core.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import {CoreModule} from "./core/core.module";
     SharedModule,
     MaterialModule,
     BrowserAnimationsModule,
-    CoreModule
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

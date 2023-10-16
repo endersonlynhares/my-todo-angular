@@ -2,5 +2,5 @@
   <label for="{{field}}" class="input-group__label">{{label | titlecase}} </label>
   <input type="{{type}}" class="input-group__input" id="{{field}}" (blur)="onTouchedCb()" [(ngModel)]="value"
          [ngClass]="{'border-danger': verifyValidTouched() }">
-  <!--  <app-field-control-error [field]="field" [control]="control"></app-field-control-error>-->
+  <app-field-control-error [field]="field" [control]="control"></app-field-control-error>
 </div>

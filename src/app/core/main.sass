@@ -36,3 +36,42 @@ body
   background-color: #E9ECEF !important
   padding: 0 0 0 0 !important
   overflow: hidden !important
+
+.mat-mdc-table .mat-mdc-header-cell
+  text-align: center
+
+.mat-mdc-row
+  &:nth-child(odd)
+    background-color: #F4F5F6
+
+  &:nth-child(even)
+    background-color: #F9F9F9
+
+.mat-mdc-table .mat-mdc-cell
+  text-align: center
+
+  button
+    display: inline-block
+    width: 30px
+    align-items: center
+    justify-content: center
+    border-radius: 4px
+    height: 30px
+    border: none
+    margin: 0 5px
+
+    &.pencil
+      background-color: var(--warning)
+
+    &.trash
+      background-color: var(--danger)
+
+thead
+  color: #343A40 !important
+  background-color: #E9ECEF !important
+
+  tr
+    th
+      color: #343A40 !important
+      font-weight: 700
+      font-size: 1rem

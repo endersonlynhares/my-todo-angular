@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {FormControl} from "@angular/forms";
+import {AbstractControl, FormControl} from "@angular/forms";
 import {FormValidations} from "../form-validations";
 
 @Component({
@@ -9,11 +9,7 @@ import {FormValidations} from "../form-validations";
 })
 export class FieldControlErrorComponent {
   @Input() field!: string
-  @Input() control!: FormControl
-
-  constructor() {
-
-  }
+  @Input() control!: any
 
   get errorMessage() {
     for (const propertyName in this.control.errors) {

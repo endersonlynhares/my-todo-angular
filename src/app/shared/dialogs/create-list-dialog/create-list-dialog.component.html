@@ -1,5 +1,5 @@
 <form [formGroup]="formulario" (ngSubmit)="createList()">
-  <app-common-dialog [contentTemplate]="dialogContentTemplate"></app-common-dialog>
+  <app-common-dialog [disabled]="formulario.invalid" [contentTemplate]="dialogContentTemplate"></app-common-dialog>
   <ng-template #dialogContentTemplate>
     <app-input-dialog
       [control]="formulario.get('name')"
