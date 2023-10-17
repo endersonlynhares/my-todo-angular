@@ -11,13 +11,13 @@
         id="description"
       ></app-input-dialog>
       <div
+        (scroll)="onScroll($event)"
       >
         <label for="assignmentListId">Lista</label>
         <mat-select
           placeholder="Lista relacionada"
           formControlName="assignmentListId"
           id="assignmentListId"
-          (scroll)="scrollHandler($event)"
           class="insights-results"
           #matSelect
         >

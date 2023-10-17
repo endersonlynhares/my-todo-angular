@@ -27,7 +27,14 @@ export class CreateTaskDialogComponent extends BaseFormComponent implements OnDe
     super()
   }
 
-  @ViewChild('matSelect', { static: false }) matSelect!: MatSelect;
+  @HostListener('scroll', ['$event'])
+  public onScroll(event: any) {
+    if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
+      alert('Carregar mais!')
+    }
+  }
+
+  @ViewChild('matSelect', {static: false}) matSelect!: MatSelect;
 
   scrollHandler(event: Event) {
     let insightsResults = document.getElementsByClassName('insights-results')[0];

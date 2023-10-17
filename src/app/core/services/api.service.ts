@@ -54,14 +54,7 @@ export class ApiService {
   }
 
   addAssignmentList(data: AssignmentList) {
-    this.http.post<AssignmentList>(`${apiURL}/AssignmentList`, data).subscribe({
-      next: (data) => {
-        console.log('Lista criada com sucesso!')
-      },
-      error: err => {
-        console.log(err.message)
-      }
-    })
+    return this.http.post<AssignmentList>(`${apiURL}/AssignmentList`, data)
   }
 
   addAssignment(data: Assignment) {
@@ -79,9 +72,7 @@ export class ApiService {
   }
 
   deleteAssignmentList(id: string) {
-    this.http.delete(`${apiURL}/AssignmentList/${id}`).subscribe(data => {
-      alert('lista deletada com sucesso.')
-    })
+    return this.http.delete(`${apiURL}/AssignmentList/${id}`)
   }
 
   updateAssignmentList(newName: string, id: string) {

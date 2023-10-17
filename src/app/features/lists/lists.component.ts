@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from '../../core/services/api.service';
 import {AssignmentList, AssignmentListPaged} from '../../domain-types/models/AssigmentList';
 import {MatDialog} from '@angular/material/dialog';
@@ -15,7 +15,7 @@ import {Subscription} from 'rxjs';
 export class ListsComponent implements OnInit, OnDestroy {
   lists: AssignmentList[] = [];
   displayedColumns: string[] = ['name', 'actions'];
-  dataSource: MatTableDataSource<AssignmentList> = new MatTableDataSource<AssignmentList>([]); // Especificando o tipo
+  dataSource: MatTableDataSource<AssignmentList> = new MatTableDataSource<AssignmentList>([]);
   private subscription: Subscription = new Subscription();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -29,6 +29,7 @@ export class ListsComponent implements OnInit, OnDestroy {
     this.paginator.pageSize = data.perPage;
     this.paginator.pageIndex = data.page - 1;
   }
+
 
   loadData(pageSize: number, pageIndex: number) {
     this.api.getAssignmentList(pageSize, pageIndex).subscribe({
@@ -64,16 +65,26 @@ export class ListsComponent implements OnInit, OnDestroy {
   }
 
   deleteList(list: AssignmentList) {
-    this.api.deleteAssignmentList(list.id);
+    this.api.deleteAssignmentList(list.id).subscribe({
+      next: data => {
+        this.loadData(10, 1)
+      }
+    })
   }
 
   onCallParent() {
-    this.newListDialog.open(CreateListDialogComponent, {
+    let dialog = this.newListDialog.open(CreateListDialogComponent, {
       width: '750px',
       panelClass: 'dialog-colorful',
       data: {
         title: 'Create List',
       },
     });
+
+    dialog.afterClosed().subscribe(data => {
+      if (data.createdNewList) {
+        this.loadData(10, 1)
+      }
+    })
   }
 }

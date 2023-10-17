@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ApiService} from "../../../core/services/api.service";
 import {BaseFormComponent} from "../../form-base/form-base";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-list-dialog',
@@ -11,7 +12,8 @@ import {BaseFormComponent} from "../../form-base/form-base";
 export class CreateListDialogComponent extends BaseFormComponent implements OnInit {
   constructor(
     private buildr: FormBuilder,
-    private api: ApiService
+    private api: ApiService,
+    private dialogRef: MatDialogRef<CreateListDialogComponent>
   ) {
     super()
   }
@@ -26,6 +28,9 @@ export class CreateListDialogComponent extends BaseFormComponent implements OnIn
   }
 
   createList() {
-    this.api.addAssignmentList(this.formulario.value)
+    this.api.addAssignmentList(this.formulario.value).subscribe({
+      next: data => this.dialogRef.close({createdNewList: true}),
+      error: err => console.log(err.message)
+    })
   }
 }
