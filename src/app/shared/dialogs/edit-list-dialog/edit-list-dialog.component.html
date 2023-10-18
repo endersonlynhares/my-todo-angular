@@ -1,0 +1,13 @@
+<form [formGroup]="formulario" (ngSubmit)="editList()">
+  <app-common-dialog [disabled]="formulario.invalid" [contentTemplate]="dialogContentTemplate"></app-common-dialog>
+  <ng-template #dialogContentTemplate>
+    <app-input-dialog
+      [control]="formulario.get('name')"
+      field="name"
+      formControlName="name"
+      type="text"
+      label="Nome"
+      id="name"
+    ></app-input-dialog>
+  </ng-template>
+</form>

@@ -76,7 +76,7 @@ export class ApiService {
   }
 
   updateAssignmentList(newName: string, id: string) {
-
+    return this.http.put(`${apiURL}/AssignmentList/${id}`, {id: id, name: newName})
   }
 
   registerUser(newUser: registerUserData) {

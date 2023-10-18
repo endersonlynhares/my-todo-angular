@@ -1,11 +1,12 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from '../../core/services/api.service';
 import {AssignmentList, AssignmentListPaged} from '../../domain-types/models/AssigmentList';
 import {MatDialog} from '@angular/material/dialog';
 import {CreateListDialogComponent} from '../../shared/dialogs/create-list-dialog/create-list-dialog.component';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
-import {Subscription} from 'rxjs';
+import Swal from "sweetalert2"
+import {EditListDialogComponent} from "../../shared/dialogs/edit-list-dialog/edit-list-dialog.component";
 
 @Component({
   selector: 'app-lists',
@@ -13,14 +14,17 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./lists.component.sass'],
 })
 export class ListsComponent implements OnInit, OnDestroy {
-  lists: AssignmentList[] = [];
+  lists!: AssignmentList[];
   displayedColumns: string[] = ['name', 'actions'];
   dataSource: MatTableDataSource<AssignmentList> = new MatTableDataSource<AssignmentList>([]);
-  private subscription: Subscription = new Subscription();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private api: ApiService, private newListDialog: MatDialog) {
+  constructor(
+    private api: ApiService,
+    private dialog: MatDialog,
+    private cdr: ChangeDetectorRef
+  ) {
   }
 
   configureDataSource(data: AssignmentListPaged) {
@@ -53,27 +57,51 @@ export class ListsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.loadData(10, 1);
+    this.loadData(10, 1)
+    this.cdr.detectChanges()
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
   editList(list: AssignmentList) {
-    console.log(list);
+    let dialogEdit = this.dialog.open(EditListDialogComponent, {
+      width: '750px',
+      panelClass: 'dialog-colorful',
+      data: {
+        title: 'Edit List',
+        list: list
+      },
+    })
+    dialogEdit.afterClosed().subscribe(data => {
+      if (data.updatedList) {
+        this.loadData(10, 1)
+      }
+    })
   }
 
   deleteList(list: AssignmentList) {
     this.api.deleteAssignmentList(list.id).subscribe({
       next: data => {
         this.loadData(10, 1)
+        Swal.fire(
+          'Remoção sucedida',
+          `Você acabou de deletar a lista com nome <strong>${list.name}</strong>`,
+          'success'
+        ).then()
+      },
+      error: err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.error['erros'][0]
+        })
       }
     })
   }
 
   onCallParent() {
-    let dialog = this.newListDialog.open(CreateListDialogComponent, {
+    let dialog = this.dialog.open(CreateListDialogComponent, {
       width: '750px',
       panelClass: 'dialog-colorful',
       data: {

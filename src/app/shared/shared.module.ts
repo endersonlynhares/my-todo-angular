@@ -13,6 +13,7 @@ import {CreateListDialogComponent} from "./dialogs/create-list-dialog/create-lis
 import {CommonDialogComponent} from "./dialogs/common-dialog/common-dialog.component";
 import {InputDialogComponent} from "./dialogs/input-dialog/input-dialog.component";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {EditListDialogComponent} from "./dialogs/edit-list-dialog/edit-list-dialog.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
     CreateTaskDialogComponent,
     CreateListDialogComponent,
     CommonDialogComponent,
-    InputDialogComponent
+    InputDialogComponent,
+    EditListDialogComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
     CreateTaskDialogComponent,
     CreateListDialogComponent,
     CommonDialogComponent,
-    InputDialogComponent
+    InputDialogComponent,
+    EditListDialogComponent
   ]
 })
 export class SharedModule {
