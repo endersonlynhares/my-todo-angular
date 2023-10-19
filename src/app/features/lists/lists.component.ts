@@ -5,8 +5,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {CreateListDialogComponent} from '../../shared/dialogs/create-list-dialog/create-list-dialog.component';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
-import Swal from "sweetalert2"
 import {EditListDialogComponent} from "../../shared/dialogs/edit-list-dialog/edit-list-dialog.component";
+import {ConfirmDialogComponent} from "../../shared/dialogs/confirm-dialog/confirm-dialog";
 
 @Component({
   selector: 'app-lists',
@@ -81,21 +81,18 @@ export class ListsComponent implements OnInit, OnDestroy {
   }
 
   deleteList(list: AssignmentList) {
-    this.api.deleteAssignmentList(list.id).subscribe({
-      next: data => {
-        this.loadData(10, 1)
-        Swal.fire(
-          'Remoção sucedida',
-          `Você acabou de deletar a lista com nome <strong>${list.name}</strong>`,
-          'success'
-        ).then()
+    let dialog = this.dialog.open(ConfirmDialogComponent, {
+      width: '750px',
+      panelClass: 'dialog-colorful',
+      data: {
+        title: 'Remover Lista',
+        list: list
       },
-      error: err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: err.error['erros'][0]
-        })
+    })
+
+    dialog.afterClosed().subscribe(data => {
+      if (data?.removedList) {
+        this.loadData(10, 1)
       }
     })
   }

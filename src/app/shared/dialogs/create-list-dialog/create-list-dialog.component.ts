@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {ApiService} from "../../../core/services/api.service";
 import {BaseFormComponent} from "../../form-base/form-base";
 import {MatDialogRef} from "@angular/material/dialog";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-create-list-dialog',
@@ -29,7 +30,15 @@ export class CreateListDialogComponent extends BaseFormComponent implements OnIn
 
   createList() {
     this.api.addAssignmentList(this.formulario.value).subscribe({
-      next: data => this.dialogRef.close({createdNewList: true}),
+      next: data => {
+        this.dialogRef.close({createdNewList: true})
+        Swal.fire(
+          'Lista criada com sucesso',
+          '',
+          'success'
+        ).then()
+
+      },
       error: err => console.log(err.message)
     })
   }

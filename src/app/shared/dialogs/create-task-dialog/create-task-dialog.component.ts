@@ -28,7 +28,7 @@ export class CreateTaskDialogComponent extends BaseFormComponent implements OnDe
   }
 
   @HostListener('scroll', ['$event'])
-  public onScroll(event: any) {
+  public onScrolls(event: any) {
     if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
       alert('Carregar mais!')
     }
@@ -45,6 +45,10 @@ export class CreateTaskDialogComponent extends BaseFormComponent implements OnDe
       this.loadMore();
       console.log('loading...', this.page);
     }
+  }
+
+  onScroll(){
+    alert('????????')
   }
 
   loadMore(): void {

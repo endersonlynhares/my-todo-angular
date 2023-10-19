@@ -11,7 +11,6 @@
         id="description"
       ></app-input-dialog>
       <div
-        (scroll)="onScroll($event)"
       >
         <label for="assignmentListId">Lista</label>
         <mat-select
@@ -21,7 +20,15 @@
           class="insights-results"
           #matSelect
         >
-          <mat-option *ngFor="let list of lists" [value]="list.id">{{list.name}}</mat-option>
+          <div
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="500"
+            (scrolled)="onScroll()"
+            [scrollWindow]="false"
+          >
+            <mat-option *ngFor="let list of lists" [value]="list.id">{{list.name}}</mat-option>
+          </div>
         </mat-select>
         <app-field-control-error
           field="assignmentListId"

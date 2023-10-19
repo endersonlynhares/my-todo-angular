@@ -19,7 +19,10 @@
     <div class="filter__body__group-select">
       <label for="list">Lista</label>
       <select name="list" id="list">
-        <option value="">Selecione aqui</option>
+        <div>
+          <option value="">Selecione aqui</option>
+          <option *ngFor="let item of lists" value="{{item.id}}">{{item.name}}</option>
+        </div>
       </select>
     </div>
     <div class="filter__body__group-select">

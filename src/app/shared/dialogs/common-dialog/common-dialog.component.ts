@@ -10,6 +10,7 @@ export class CommonDialogComponent {
   inputData!: any
   @Input() disabled: boolean = false
   @Input() contentTemplate: any
+  @Input() buttonName: string = 'Salvar'
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

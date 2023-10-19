@@ -6,6 +6,7 @@ import {SharedModule} from "../../shared/shared.module";
 import { FilterComponent } from './filter/filter.component';
 import { CardComponent } from './card/card.component';
 import { CardsComponent } from './cards/cards.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CardsComponent } from './cards/cards.component';
     imports: [
         CommonModule,
         TasksRoutingModule,
-        SharedModule
+        SharedModule,
+        ReactiveFormsModule
     ]
 })
 export class TasksModule {

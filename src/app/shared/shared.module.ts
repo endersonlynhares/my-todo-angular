@@ -14,6 +14,7 @@ import {CommonDialogComponent} from "./dialogs/common-dialog/common-dialog.compo
 import {InputDialogComponent} from "./dialogs/input-dialog/input-dialog.component";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {EditListDialogComponent} from "./dialogs/edit-list-dialog/edit-list-dialog.component";
+import {ConfirmDialogComponent} from "./dialogs/confirm-dialog/confirm-dialog";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {EditListDialogComponent} from "./dialogs/edit-list-dialog/edit-list-dial
     CreateListDialogComponent,
     CommonDialogComponent,
     InputDialogComponent,
-    EditListDialogComponent
+    EditListDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import {EditListDialogComponent} from "./dialogs/edit-list-dialog/edit-list-dial
     CreateListDialogComponent,
     CommonDialogComponent,
     InputDialogComponent,
-    EditListDialogComponent
+    EditListDialogComponent,
+    ConfirmDialogComponent
   ]
 })
 export class SharedModule {
