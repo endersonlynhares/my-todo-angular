@@ -1,0 +1,40 @@
+.list-style
+  height: 8em
+  overflow-y: auto
+  text-align: center
+  margin: auto
+
+.dropdown-scroll
+  box-sizing: border-box
+  background-color: #fff
+  border-radius: 10px
+  height: 48px
+  transition: all 0.2s ease-in-out
+
+  &--activated
+    height: 140px
+
+  header
+    padding: 1.2rem
+    display: flex
+    height: 48px
+    align-items: center
+    justify-content: space-between
+
+    button
+      background-color: transparent
+      border: none
+      transition: transform 0.3s
+
+      &--rotate
+        transform: rotate(180deg)
+
+  &__body
+    background-color: white
+    margin: 0
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12)
+
+
+.divider
+  border: 0.5px solid rgba(51, 51, 51, 0.1)
+  margin: -8px 1rem

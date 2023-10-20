@@ -9,9 +9,11 @@ import {CreateTaskDialogComponent} from "../../shared/dialogs/create-task-dialog
 })
 export class TasksComponent {
 
+
   constructor(
     private newListDialog: MatDialog,
   ) {
+
   }
 
   onCallParent() {
@@ -24,4 +26,5 @@ export class TasksComponent {
     })
   }
 
+  protected readonly onscroll = onscroll;
 }
