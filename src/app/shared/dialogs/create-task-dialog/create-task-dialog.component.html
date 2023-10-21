@@ -17,18 +17,10 @@
           placeholder="Lista relacionada"
           formControlName="assignmentListId"
           id="assignmentListId"
-          class="insights-results"
-          #matSelect
+          #doctorSelect
+          (closed)="reset()"
         >
-          <div
-            infiniteScroll
-            [infiniteScrollDistance]="2"
-            [infiniteScrollThrottle]="500"
-            (scrolled)="onScroll()"
-            [scrollWindow]="false"
-          >
-            <mat-option *ngFor="let list of lists" [value]="list.id">{{list.name}}</mat-option>
-          </div>
+          <mat-option *ngFor="let list of lists" [value]="list.id">{{list.name}}</mat-option>
         </mat-select>
         <app-field-control-error
           field="assignmentListId"

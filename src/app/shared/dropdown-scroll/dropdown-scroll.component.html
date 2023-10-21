@@ -1,9 +1,10 @@
-<div class="dropdown-scroll"
-     [ngClass]="{
-  'dropdown-scroll--activated': filterActive
+<div
+  class="filter"
+  [ngClass]="{
+  'filter--activated': filterActive
   }"
 >
-  <header class="dropdown-scroll__header">
+  <header class="filter__header">
     <span>Selecione uma lista</span>
     <button class="filter__header__button" (click)="toggleCollapse()"
             [ngClass]="{
@@ -13,9 +14,16 @@
       <svg-arrow></svg-arrow>
     </button>
   </header>
-  <div *ngIf="filterActive" class="dropdown-scroll__body">
-    <div class="list-style" (scroll)="onScroll($event)">
-      <div class="list-item" *ngFor="let item of list" (click)="selectValue(item)">{{item.name}}</div>
+  <div
+    *ngIf="filterActive"
+    class="filter__body"
+    [ngClass]="{
+      'filter__body--activated': filterActive
+    }"
+  >
+    <div class="list" (scroll)="onScroll($event)">
+      <div class="list__item" *ngFor="let item of list" (click)="selectValue(item)">{{item.name}}</div>
     </div>
   </div>
 </div>
+
