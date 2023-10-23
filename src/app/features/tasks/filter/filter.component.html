@@ -18,24 +18,26 @@
   <div *ngIf="filterActive" class="filter__body">
     <div class="filter__body__group-select">
       <label for="list">Lista</label>
-      <select name="list" id="list">
-        <div>
-          <option value="">Selecione aqui</option>
-          <option *ngFor="let item of lists" value="{{item.id}}">{{item.name}}</option>
-        </div>
-      </select>
+      <mat-select
+        value="{{defaultValueSelect}}"
+        placeholder="Selecione uma lista aqui"
+        id="list"
+        (valueChange)="selectList($event)"
+        #selectLists
+        (closed)="reset()"
+      >
+        <mat-option *ngFor="let item of lists" value="{{item.id}}">{{item.name}}</mat-option>
+      </mat-select>
     </div>
     <div class="filter__body__group-select">
-      <label for="date">Data de Conclusão</label>
-      <select name="date" id="date">
-        <option value="">Selecione aqui</option>
-      </select>
+      <label for="deadline">Data de conclusão: </label>
+      <input type="date" id="deadline">
     </div>
     <div class="filter__body__group-select">
       <label for="order">Ordernar por</label>
-      <select name="order" id="order">
-        <option value="">Selecione aqui</option>
-      </select>
+      <mat-select name="order" id="order">
+        <mat-option value="">Selecione aqui</mat-option>
+      </mat-select>
     </div>
   </div>
 </div>

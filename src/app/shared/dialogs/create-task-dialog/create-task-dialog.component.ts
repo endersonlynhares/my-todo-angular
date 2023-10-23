@@ -86,12 +86,14 @@ export class CreateTaskDialogComponent extends BaseFormComponent implements OnDe
   }
 
   reset() {
+    this.page = 1
     this.loadData(10, 1)
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
   }
+
 
   submit() {
   }
@@ -100,7 +102,7 @@ export class CreateTaskDialogComponent extends BaseFormComponent implements OnDe
     let date: moment.Moment = moment.utc(this.formulario.get('deadline')?.value).local()
     this.formulario.value.deadline = date.format('YYYY-MM-DD') + "T" + this.formulario.get('time')?.value + ":00.000Z"
     this.api.addAssignment({
-      deadline: this.formulario.value.dealine,
+      deadline: this.formulario.value.deadline,
       assignmentListId: this.formulario.value.assignmentListId,
       description: this.formulario.value.description
     });

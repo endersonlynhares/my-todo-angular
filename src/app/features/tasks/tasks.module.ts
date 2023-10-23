@@ -7,6 +7,11 @@ import { FilterComponent } from './filter/filter.component';
 import { CardComponent } from './card/card.component';
 import { CardsComponent } from './cards/cards.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {MatIconModule} from "@angular/material/icon";
+import {MaterialModule} from "../../core/material.module";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 @NgModule({
@@ -16,12 +21,17 @@ import {ReactiveFormsModule} from "@angular/forms";
     CardComponent,
     CardsComponent
   ],
-    imports: [
-        CommonModule,
-        TasksRoutingModule,
-        SharedModule,
-        ReactiveFormsModule
-    ]
+  imports: [
+    CommonModule,
+    TasksRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatIconModule,
+    MaterialModule,
+    MatDatepickerModule
+  ]
 })
 export class TasksModule {
 }

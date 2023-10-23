@@ -53,6 +53,10 @@ export class ApiService {
     )
   }
 
+  getAssignments(id: string) {
+    return this.http.get<any>(`${apiURL}/Assignments/${id}`)
+  }
+
   addAssignmentList(data: AssignmentList) {
     return this.http.post<AssignmentList>(`${apiURL}/AssignmentList`, data)
   }
