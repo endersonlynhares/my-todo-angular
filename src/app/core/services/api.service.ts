@@ -3,7 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {TokenResponse} from "../../domain-types/models/TokenResponse";
 import {AssignmentList, AssignmentListPaged} from "../../domain-types/models/AssigmentList";
-import {Assignment} from "../../domain-types/models/Assignment";
+import {AddAssignment, Assignment, AssignmentsPaged} from "../../domain-types/models/Assignment";
+import {Observable} from "rxjs";
 
 interface UserLogin {
   name: string,
@@ -47,22 +48,16 @@ export class ApiService {
     return this.http.get<AssignmentListPaged>(`${apiURL}/AssignmentList?Page=${pageIndex}&PerPage=${pageSize}`)
   }
 
-  getAllAssignments() {
-    return (
-      this.http.get<any>(`${apiURL}/Assignments`).subscribe(data => console.log(data))
-    )
-  }
-
-  getAssignments(id: string) {
-    return this.http.get<any>(`${apiURL}/Assignments/${id}`)
+  getAssignments(id: string, pageIndex: number = 1, pageSize: number = 10): Observable<any> {
+    return this.http.get<any>(`${apiURL}/AssignmentList/${id}/assignments?Page=${pageIndex}&PerPage=${pageSize}`)
   }
 
   addAssignmentList(data: AssignmentList) {
     return this.http.post<AssignmentList>(`${apiURL}/AssignmentList`, data)
   }
 
-  addAssignment(data: Assignment) {
-    this.http.post<Assignment>(`${apiURL}/Assignments`, {
+  addAssignment(data: AddAssignment) {
+    this.http.post<AddAssignment>(`${apiURL}/Assignments`, {
       description: data.description,
       deadline: data.deadline,
       assignmentListId: data.assignmentListId
@@ -71,7 +66,7 @@ export class ApiService {
         console.log('Task criada com sucesso.')
         console.log(response)
       },
-      error: err => console.log(err.message)
+      error: err => console.log(err)
     })
   }
 

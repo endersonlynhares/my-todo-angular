@@ -1,8 +1,3 @@
 <div class="cards">
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
+  <app-card *ngFor="let task of tasks | async"></app-card>
 </div>

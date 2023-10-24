@@ -4,6 +4,7 @@ import {AssignmentList} from "../../../domain-types/models/AssigmentList";
 import {MatSelect} from "@angular/material/select";
 import {Assignment} from "../../../domain-types/models/Assignment";
 import {Observable} from "rxjs";
+import {DataSharingService} from "../../../core/services/data-sharing.service";
 
 @Component({
   selector: 'app-filter',
@@ -13,13 +14,13 @@ import {Observable} from "rxjs";
 export class FilterComponent implements OnInit, AfterViewInit {
   defaultValueSelect!: string
   lists!: AssignmentList[]
-  tasks!: Observable<Assignment[]>
   private page: number = 1
   private maxPage!: number
-  filterActive: boolean = false
+  filterActive: boolean = true
 
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private sharedApi: DataSharingService
   ) {
   }
 
@@ -65,12 +66,16 @@ export class FilterComponent implements OnInit, AfterViewInit {
       error: err => console.log(err.message)
     })
 
-    this.tasks.subscribe(data => console.log(data))
+    this.api.getAssignments(this.defaultValueSelect).subscribe(data => {
+      this.sharedApi.setTasks(data)
+    })
+
   }
 
   selectList(e: string) {
-    this.tasks = this.api.getAssignments(e)
-    this.tasks.subscribe(data => console.log(data))
+    this.api.getAssignments(e).subscribe(data => {
+      this.sharedApi.setTasks(data)
+    })
   }
 
   loadData(pageSize: number, page: number) {
