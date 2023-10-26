@@ -57,16 +57,10 @@ export class ApiService {
   }
 
   addAssignment(data: AddAssignment) {
-    this.http.post<AddAssignment>(`${apiURL}/Assignments`, {
+    return this.http.post<AddAssignment>(`${apiURL}/Assignments`, {
       description: data.description,
       deadline: data.deadline,
       assignmentListId: data.assignmentListId
-    }).subscribe({
-      next: (response) => {
-        console.log('Task criada com sucesso.')
-        console.log(response)
-      },
-      error: err => console.log(err)
     })
   }
 

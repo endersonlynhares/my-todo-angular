@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, HostListener, Inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ApiService} from "../../../core/services/api.service";
 import {BaseFormComponent} from "../../form-base/form-base";
@@ -7,6 +7,8 @@ import {Subscription} from "rxjs";
 import {FormValidations} from "../../form-validations";
 import * as moment from "moment"
 import {MatSelect} from "@angular/material/select";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-create-task-dialog',
@@ -21,7 +23,9 @@ export class CreateTaskDialogComponent extends BaseFormComponent implements OnDe
 
   constructor(
     private buildr: FormBuilder,
-    private api: ApiService
+    private api: ApiService,
+    private dialogRef: MatDialogRef<CreateTaskDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     super()
   }
@@ -101,10 +105,16 @@ export class CreateTaskDialogComponent extends BaseFormComponent implements OnDe
   createTask() {
     let date: moment.Moment = moment.utc(this.formulario.get('deadline')?.value).local()
     this.formulario.value.deadline = date.format('YYYY-MM-DD') + "T" + this.formulario.get('time')?.value + ":00.000Z"
-    this.api.addAssignment({
-      deadline: this.formulario.value.deadline,
-      assignmentListId: this.formulario.value.assignmentListId,
-      description: this.formulario.value.description
+    this.api.addAssignment(this.formulario.value).subscribe({
+      next: (response) => {
+        this.dialogRef.close({createdNewTask: true})
+        Swal.fire(
+          `Tarefa da lista ${this.data.list.name} foi criada com sucesso!`,
+          '',
+          'success'
+        ).then()
+      },
+      error: err => console.log(err)
     });
   }
 

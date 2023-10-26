@@ -30,6 +30,7 @@ export class FilterComponent implements OnInit, AfterViewInit {
     this.selectElem.openedChange.subscribe(() => {
       this.registerPanelScrollEvent()
     })
+
   }
 
   registerPanelScrollEvent() {
@@ -60,15 +61,15 @@ export class FilterComponent implements OnInit, AfterViewInit {
         this.lists = data.items
         this.maxPage = data.pageCount
         this.defaultValueSelect = data.items[0].id
-        console.log(this.defaultValueSelect)
-        this.api.getAssignments(data.items[0].id).subscribe(data => console.log(data))
+        this.api.getAssignments(this.defaultValueSelect).subscribe(data => {
+          this.sharedApi.setTasks(data)
+        })
       },
       error: err => console.log(err.message)
     })
 
-    this.api.getAssignments(this.defaultValueSelect).subscribe(data => {
-      this.sharedApi.setTasks(data)
-    })
+
+
 
   }
 

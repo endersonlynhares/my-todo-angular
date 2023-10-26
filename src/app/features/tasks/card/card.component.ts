@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Assignment} from "../../../domain-types/models/Assignment";
 
 @Component({
   selector: 'app-card',
@@ -7,7 +8,7 @@ import {Component} from '@angular/core';
 })
 export class CardComponent {
   showActions: boolean = false
-
+  @Input() task!: Assignment
   onShowActions() {
     this.showActions = !this.showActions
   }
