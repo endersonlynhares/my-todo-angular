@@ -2,6 +2,7 @@ import {ChangeDetectorRef, Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {CreateTaskDialogComponent} from "../../shared/dialogs/create-task-dialog/create-task-dialog.component";
 import {DataSharingService} from "../../core/services/data-sharing.service";
+import {ApiService} from "../../core/services/api.service";
 
 @Component({
   selector: 'app-tasks',
@@ -14,12 +15,13 @@ export class TasksComponent {
     private newListDialog: MatDialog,
     private cdr: ChangeDetectorRef,
     private sharedApi: DataSharingService,
+    private api: ApiService
   ) {
 
   }
 
   loadData(){
-    // fazer o reload das tasks ao criar uma nova !! 26-10-2023
+
   }
 
   onCallParent() {

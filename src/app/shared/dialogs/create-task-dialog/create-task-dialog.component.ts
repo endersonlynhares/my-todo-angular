@@ -9,6 +9,7 @@ import * as moment from "moment"
 import {MatSelect} from "@angular/material/select";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import Swal from "sweetalert2";
+import {DataSharingService} from "../../../core/services/data-sharing.service";
 
 @Component({
   selector: 'app-create-task-dialog',
@@ -25,7 +26,7 @@ export class CreateTaskDialogComponent extends BaseFormComponent implements OnDe
     private buildr: FormBuilder,
     private api: ApiService,
     private dialogRef: MatDialogRef<CreateTaskDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    private sharedApi: DataSharingService
   ) {
     super()
   }
@@ -108,8 +109,16 @@ export class CreateTaskDialogComponent extends BaseFormComponent implements OnDe
     this.api.addAssignment(this.formulario.value).subscribe({
       next: (response) => {
         this.dialogRef.close({createdNewTask: true})
+        this.api.getAssignmentList().subscribe({
+          next: (data) => {
+            this.api.getAssignments(this.formulario.get('assignmentListId')?.value).subscribe(data => {
+              this.sharedApi.setTasks(data)
+            })
+          },
+          error: err => console.log(err.message)
+        })
         Swal.fire(
-          `Tarefa da lista ${this.data.list.name} foi criada com sucesso!`,
+          `Tarefa criada com sucesso!`,
           '',
           'success'
         ).then()
