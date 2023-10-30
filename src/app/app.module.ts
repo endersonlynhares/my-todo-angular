@@ -10,7 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CoreModule} from "./core/core.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
-
+import {registerLocaleData} from "@angular/common";
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent

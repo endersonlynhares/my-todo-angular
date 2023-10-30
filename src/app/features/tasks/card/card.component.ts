@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Assignment} from "../../../domain-types/models/Assignment";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-card',
@@ -9,8 +10,14 @@ import {Assignment} from "../../../domain-types/models/Assignment";
 export class CardComponent {
   showActions: boolean = false
   @Input() task!: Assignment
+
   onShowActions() {
     this.showActions = !this.showActions
+  }
+
+  formatDate(dateString: string){
+    const date = new Date(dateString)
+    return new DatePipe('pt-BR').transform(date, 'dd MMMM, HH:mm')
   }
 
 }
