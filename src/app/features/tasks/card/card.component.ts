@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Assignment} from "../../../domain-types/models/Assignment";
 import {DatePipe} from "@angular/common";
+import {getSituation, SituationColor} from "../../../utils/situation-card";
 
 @Component({
   selector: 'app-card',
@@ -20,4 +21,6 @@ export class CardComponent {
     return new DatePipe('pt-BR').transform(date, 'dd MMMM, HH:mm')
   }
 
+  protected readonly getSituation = getSituation;
+  protected readonly SituationColor = SituationColor;
 }

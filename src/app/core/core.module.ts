@@ -18,7 +18,11 @@ import {FilterPipe} from "./pipes/filter.pipe";
     ComponentsModule,
   ],
   exports: [
-    FilterPipe
+    FilterPipe,
+    HttpClientModule,
+    AuthLayoutModule,
+    CommonLayoutModule,
+    ComponentsModule,
   ]
 })
 export class CoreModule {
