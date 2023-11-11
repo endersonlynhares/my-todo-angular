@@ -1,12 +1,13 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from '../../core/services/api.service';
 import {AssignmentList, AssignmentListPaged} from '../../domain-types/models/AssigmentList';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {CreateListDialogComponent} from '../../shared/dialogs/create-list-dialog/create-list-dialog.component';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {EditListDialogComponent} from "../../shared/dialogs/edit-list-dialog/edit-list-dialog.component";
 import {ConfirmDialogComponent} from "../../shared/dialogs/confirm-dialog/confirm-dialog";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-lists',
@@ -81,12 +82,33 @@ export class ListsComponent implements OnInit, OnDestroy {
   }
 
   deleteList(list: AssignmentList) {
+    const onConfirm = (dialogRef: MatDialogRef<ConfirmDialogComponent> ) => {
+      this.api.deleteAssignmentList(list.id).subscribe({
+        next: data => {
+          Swal.fire(
+            'Lista deletada com sucessoo!',
+            `A lista ${list.name} foi removida com sucesso`,
+            'success'
+          ).then()
+          dialogRef.close({removedList: true})
+        },
+        error: err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.error['erros'],
+          }).then()
+          console.log(err)
+        }
+      })
+    }
+
     let dialog = this.dialog.open(ConfirmDialogComponent, {
       width: '750px',
       panelClass: 'dialog-colorful',
       data: {
         title: 'Remover Lista',
-        list: list
+        onConfirm: onConfirm
       },
     })
 

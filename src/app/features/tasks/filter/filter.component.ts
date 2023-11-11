@@ -64,19 +64,17 @@ export class FilterComponent implements OnInit, AfterViewInit {
         this.api.getAssignments(this.defaultValueSelect).subscribe(data => {
           this.sharedApi.setTasks(data)
         })
+        this.sharedApi.setCurrentList(this.defaultValueSelect)
       },
       error: err => console.log(err.message)
     })
-
-
-
-
   }
 
   selectList(e: string) {
     this.api.getAssignments(e).subscribe(data => {
       this.sharedApi.setTasks(data)
     })
+    this.sharedApi.setCurrentList(e)
   }
 
   loadData(pageSize: number, page: number) {

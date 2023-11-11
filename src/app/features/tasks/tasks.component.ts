@@ -20,12 +20,8 @@ export class TasksComponent {
 
   }
 
-  loadData(){
-
-  }
-
   onCallParent() {
-   let dialog = this.newListDialog.open(CreateTaskDialogComponent, {
+    let dialog = this.newListDialog.open(CreateTaskDialogComponent, {
       width: '750px',
       panelClass: 'dialog-colorful',
       data: {
@@ -33,9 +29,8 @@ export class TasksComponent {
       }
     })
 
-    dialog.afterClosed().subscribe(data =>{
-      if(data.createdNewTask){
-        this.loadData()
+    dialog.afterClosed().subscribe(data => {
+      if (data.createdNewTask) {
       }
     })
   }

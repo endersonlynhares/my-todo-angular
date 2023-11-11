@@ -18,23 +18,24 @@
       <span class="card__info__title">{{task.description}}</span>
     </div>
     <div class="card__info__actions">
-      <button (click)="onShowActions()" class="card__info__actions__btn-arrow">
+      <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+              class="card__info__actions__btn-arrow">
         <svg-dots width="15" height="15"/>
       </button>
-      <ul *ngIf="showActions" class="card__info__actions__body">
-        <li>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
           <svg-checked/>
-          Concluir
-        </li>
-        <li>
+          <span>Concluir</span>
+        </button>
+        <button mat-menu-item (click)="onEdit()">
           <svg-pencil color="#25294C" height="12" width="12"/>
-          Editar
-        </li>
-        <li>
+          <span>Editar</span>
+        </button>
+        <button mat-menu-item (click)="onRemove()">
           <svg-trash color="#25294C" height="12" width="12"/>
-          Remover
-        </li>
-      </ul>
+          <span>Remover</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
   <div class="card__add-info">

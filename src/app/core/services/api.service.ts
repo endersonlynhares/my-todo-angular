@@ -68,6 +68,10 @@ export class ApiService {
     return this.http.delete(`${apiURL}/AssignmentList/${id}`)
   }
 
+  deleteAssignment(id: string){
+    return this.http.delete(`${apiURL}/Assignments/${id}`)
+  }
+
   updateAssignmentList(newName: string, id: string) {
     return this.http.put(`${apiURL}/AssignmentList/${id}`, {id: id, name: newName})
   }

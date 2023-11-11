@@ -24,25 +24,7 @@ export class ConfirmDialogComponent extends BaseFormComponent implements OnInit 
   }
 
   confirm() {
-    this.api.deleteAssignmentList(this.data.list.id).subscribe({
-      next: data => {
-        Swal.fire(
-          'Lista deletada com sucessoo!',
-          `A lista ${this.data.list.name} foi removida com sucesso`,
-          'success'
-        ).then()
-        this.dialogRef.close({removedList: true})
-      },
-      error: err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: err.error['erros'],
-        }).then()
-        console.log(err)
-      }
-    })
+    this.data.onConfirm(this.dialogRef)
   }
-}
 
-// e2024646-cc42-46aa-973e-11bcdbe4fa85
+}

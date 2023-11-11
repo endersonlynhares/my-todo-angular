@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {ApiService} from "../../../core/services/api.service";
+import {Component, OnInit} from '@angular/core';
+
 import {Assignment} from "../../../domain-types/models/Assignment";
 import {Observable} from "rxjs";
 import {DataSharingService} from "../../../core/services/data-sharing.service";
@@ -14,7 +14,6 @@ export class CardsComponent implements OnInit {
 
   constructor(
     private sharedApi: DataSharingService,
-    private api: ApiService
   ) {
 
   }
@@ -22,7 +21,6 @@ export class CardsComponent implements OnInit {
 
   ngOnInit() {
     this.tasks = this.sharedApi.tasks
-    this.tasks.subscribe(data => console.log(data))
   }
 
 
