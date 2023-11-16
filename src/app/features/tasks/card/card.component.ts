@@ -13,7 +13,7 @@ import {DataSharingService} from "../../../core/services/data-sharing.service";
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.sass']
 })
-export class CardComponent implements OnInit{
+export class CardComponent implements OnInit {
   showActions: boolean = false
   @Input() task!: Assignment
 
@@ -28,7 +28,7 @@ export class CardComponent implements OnInit{
     this.showActions = !this.showActions
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.sharedApi.currentId.subscribe(data => console.log(data))
   }
 
@@ -41,9 +41,49 @@ export class CardComponent implements OnInit{
     return "vai da bom ein"
   }
 
+  onConclude() {
+    const onConfirm = (dialogRef: MatDialogRef<ConfirmDialogComponent>) => {
+      this.apiService.concludeAssignment(this.task).subscribe({
+        next: () => {
+          Swal.fire(
+            'Tarefa concluída sucessoo!',
+            `A tarefa ${this.task.description} foi concluída com sucesso`,
+            'success'
+          ).then()
+          dialogRef.close({concludedTask: true})
+        },
+        error: err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.error['erros'],
+          }).then()
+          console.log(err)
+        }
+      })
+    }
+
+    let dialog = this.dialog.open(ConfirmDialogComponent, {
+      width: '750px',
+      data: {
+        title: "Concluir tarefa",
+        description: "concluir",
+        onConfirm: onConfirm
+      }
+    })
+
+    dialog.afterClosed().subscribe((data) => {
+      if (data?.concludedTask) {
+        this.sharedApi.currentId.subscribe(data => {
+          this.sharedApi.loadTasks(data)
+        })
+      }
+    })
+
+  }
+
 
   onRemove() {
-
     const onConfirm = (dialogRef: MatDialogRef<ConfirmDialogComponent>) => {
       this.apiService.deleteAssignment(this.task.id).subscribe({
         next: () => {
@@ -69,6 +109,7 @@ export class CardComponent implements OnInit{
       width: '750px',
       data: {
         title: 'Remover Tarefa',
+        description: "deletar",
         onConfirm: onConfirm
       }
     })

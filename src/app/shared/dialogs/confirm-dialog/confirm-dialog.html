@@ -1,6 +1,6 @@
 <form (ngSubmit)="confirm()">
   <app-common-dialog buttonName="Confirmar" [disabled]="false" [contentTemplate]="dialogContentTemplate"></app-common-dialog>
   <ng-template #dialogContentTemplate>
-    Gostaria de deletar este item?
+    Gostaria de {{data.description}} este item?
   </ng-template>
 </form>

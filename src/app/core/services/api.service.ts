@@ -64,11 +64,19 @@ export class ApiService {
     })
   }
 
+  concludeAssignment(task: Assignment) {
+    const payload = {
+      ...task,
+      concluded: true
+    }
+    return this.http.patch(`${apiURL}/Assignment/${task.id}`, payload)
+  }
+
   deleteAssignmentList(id: string) {
     return this.http.delete(`${apiURL}/AssignmentList/${id}`)
   }
 
-  deleteAssignment(id: string){
+  deleteAssignment(id: string) {
     return this.http.delete(`${apiURL}/Assignments/${id}`)
   }
 

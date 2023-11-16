@@ -82,7 +82,7 @@ export class ListsComponent implements OnInit, OnDestroy {
   }
 
   deleteList(list: AssignmentList) {
-    const onConfirm = (dialogRef: MatDialogRef<ConfirmDialogComponent> ) => {
+    const onConfirm = (dialogRef: MatDialogRef<ConfirmDialogComponent>) => {
       this.api.deleteAssignmentList(list.id).subscribe({
         next: data => {
           Swal.fire(
@@ -108,6 +108,7 @@ export class ListsComponent implements OnInit, OnDestroy {
       panelClass: 'dialog-colorful',
       data: {
         title: 'Remover Lista',
+        description: 'remover',
         onConfirm: onConfirm
       },
     })

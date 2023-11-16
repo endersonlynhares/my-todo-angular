@@ -23,7 +23,7 @@
         <svg-dots width="15" height="15"/>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item (click)="onConclude()">
           <svg-checked/>
           <span>Concluir</span>
         </button>
