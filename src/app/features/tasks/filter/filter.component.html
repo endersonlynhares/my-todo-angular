@@ -5,7 +5,7 @@
   }"
 >
   <header class="filter__header">
-    <span>Filtros</span>
+    <span>Pesquisar p/ lista</span>
     <button class="filter__header__button" (click)="toggleCollapse()"
             [ngClass]="{
       'filter__header__button--rotate': filterActive
@@ -29,16 +29,16 @@
         <mat-option *ngFor="let item of lists" value="{{item.id}}">{{item.name}}</mat-option>
       </mat-select>
     </div>
-    <div class="filter__body__group-select">
-      <label for="deadline">Data de conclusão: </label>
-      <input type="date" id="deadline">
-    </div>
-    <div class="filter__body__group-select">
-      <label for="order">Ordernar por</label>
-      <mat-select name="order" id="order">
-        <mat-option value="">Selecione aqui</mat-option>
-      </mat-select>
-    </div>
+    <!--    <div class="filter__body__group-select">-->
+    <!--      <label for="deadline">Data de conclusão: </label>-->
+    <!--      <input type="date" id="deadline">-->
+    <!--    </div>-->
+    <!--    <div class="filter__body__group-select">-->
+    <!--      <label for="order">Ordernar por</label>-->
+    <!--      <mat-select name="order" id="order">-->
+    <!--        <mat-option value="">Selecione aqui</mat-option>-->
+    <!--      </mat-select>-->
+    <!--    </div>-->
   </div>
 </div>
 
