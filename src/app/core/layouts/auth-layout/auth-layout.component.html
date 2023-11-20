@@ -1,7 +1,9 @@
 <div class="al-container">
   <header class="al-container__header">
-    <img routerLink="/signin" class="al-container__header__image" ngSrc="{{pathLogoImage}}" height="40" width="119" alt="Logo ToDo">
-    <a class="al-container__header__link" routerLink="/signup" href="">Não possui uma conta?</a>
+    <img routerLink="/signin" class="al-container__header__image" ngSrc="{{pathLogoImage}}" height="40" width="119"
+         alt="Logo ToDo">
+    <a class="al-container__header__link" *ngIf="isLogin()" routerLink="/signup">Não possui uma conta?</a>
+    <a class="al-container__header__link" *ngIf="!isLogin()" routerLink="/signin">Já possui uma conta?</a>
   </header>
   <main class="al-container__content">
     <router-outlet></router-outlet>

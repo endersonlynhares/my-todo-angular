@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth-layout',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
 export class AuthLayoutComponent {
   pathLogoImage: string = 'assets/logo.svg'
 
+  constructor(private router: Router) {
+  }
+
+  isLogin(): boolean {
+    return this.router.url.endsWith('/signin')
+  }
 }
