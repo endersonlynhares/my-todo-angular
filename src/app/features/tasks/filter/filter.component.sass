@@ -1,6 +1,6 @@
 .filter
   box-sizing: border-box
-  background-color: #fff
+  background-color: var(--bg-card)
   border-radius: 10px
   height: 48px
   transition: all 0.2s ease
@@ -29,14 +29,14 @@
       display: flex
       flex-direction: column
       label
-        color: #343A40
+        color: var(--text-card)
       mat-select, input
         overflow: auto
         border-radius: 3px
         padding: 10px
         background-color: transparent
-        border: 1px solid rgba(51, 51, 51, 0.1)
+        border: 1px solid var(--bg-card-border)
 
 .divider
-  border: 0.5px solid rgba(51, 51, 51, 0.1)
+  border: 0.5px solid var(--bg-card-border)
   margin: -8px 1rem

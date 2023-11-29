@@ -21,6 +21,12 @@
         <span *ngIf="collapsed">{{item.label}}</span>
       </a>
     </li>
+    <li
+      class="navbar__nav__item">
+      <button (click)="toggle()">
+        <ng-icon [name]="activeTheme == 'dark' ? 'bootstrapSunFill' : 'bootstrapMoonFill'"></ng-icon>
+      </button>
+    </li>
 
   </ul>
   <footer class="navbar__footer">

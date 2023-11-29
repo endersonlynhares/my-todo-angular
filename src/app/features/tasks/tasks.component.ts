@@ -31,6 +31,7 @@ export class TasksComponent {
 
     dialog.afterClosed().subscribe(data => {
       if (data.createdNewTask) {
+
       }
     })
   }

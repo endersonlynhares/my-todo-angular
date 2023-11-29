@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {sideNavData} from "./sidenav-data";
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../../domain-types/models/User";
+import {ThemeService} from "../../theme/theme.service";
 
 @Component({
   selector: 'app-sidenav',
@@ -12,11 +13,14 @@ export class SidenavComponent {
   collapsed: boolean = false
   sideNavData = sideNavData
   user: User | null
+  activeTheme!: string
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private themeService: ThemeService
   ) {
     this.user = authService.getUser()
+    this.activeTheme = this.themeService.getActiveTheme().name
   }
 
   toggleColapse() {
@@ -25,6 +29,17 @@ export class SidenavComponent {
 
   logOut() {
     this.authService.logoutUser()
+  }
+
+
+  toggle() {
+    const active = this.themeService.getActiveTheme();
+    if (active.name === 'light') {
+      this.themeService.setTheme('dark');
+    } else {
+      this.themeService.setTheme('light');
+    }
+    this.activeTheme = this.themeService.getActiveTheme().name
   }
 
 }
