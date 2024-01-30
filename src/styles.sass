@@ -1,2 +1,16 @@
+@use '@angular/material' as mat
 @import "src/app/core/sass/main"
+@include mat.core()
 
+$dark-theme: mat.define-dark-theme((color: (primary: mat.define-palette(mat.$grey-palette),accent: mat.define-palette(mat.$blue-grey-palette))))
+
+$light-theme: mat.define-light-theme((color: (primary: mat.define-palette(mat.$indigo-palette),accent: mat.define-palette(mat.$indigo-palette))))
+
+.theme-dark
+  @include mat.all-component-colors($dark-theme)
+  @include mat.core-theme($dark-theme)
+  @include mat.button-theme($dark-theme)
+.theme-light
+  @include mat.all-component-colors($light-theme)
+  @include mat.core-theme($light-theme)
+  @include mat.button-theme($light-theme)
