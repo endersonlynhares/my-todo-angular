@@ -12,7 +12,12 @@
       ></app-input-dialog>
       <div
       >
-        <label for="assignmentListId">Lista</label>
+        <label
+          class="label"
+          for="assignmentListId"
+          [ngStyle]="{'color': 'var(--bg-icon)'}"
+        >
+          Lista</label>
         <mat-select
           placeholder="Lista relacionada"
           formControlName="assignmentListId"

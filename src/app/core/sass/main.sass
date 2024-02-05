@@ -34,27 +34,42 @@ body
   font-family: var(--font-primary)
 
 mat-select
-  overflow-y: auto
   text-align: left
   margin: auto
+  color: white
+
 
 .mat-mdc-dialog-surface
-  background-color: #E9ECEF !important
+  background: var(--background)
   padding: 0 0 0 0 !important
   overflow: hidden !important
 
 .mat-mdc-table .mat-mdc-header-cell
   text-align: center
+  background: red
+  color: white !important
+
+.cdk-header-cell
+  background: green
 
 .mat-mdc-select-min-line
   color: var(--text-card)
 
+.mat-mdc-paginator-container
+  background-color: #262626
+  color: white
+
 .mat-mdc-row
+  color: white !important
+
   &:nth-child(odd)
-    background-color: #F4F5F6
+    //background-color: #F4F5F6
+    background-color: #262626
 
   &:nth-child(even)
-    background-color: #F9F9F9
+    //background-color: #F9F9F9
+    background-color: #4b4949
+
 
 .mat-mdc-table .mat-mdc-cell
   text-align: center
